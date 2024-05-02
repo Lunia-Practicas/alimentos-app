@@ -30,7 +30,7 @@ class UpdateCategoryTest extends TestCase
         $category = Category::factory()->create(['name' => 'test']);
         $category->refresh();
 
-        $response = $this->controller->__invoke($this->request, $category->id);
+        $response = $this->controller->__invoke($category->id, $this->request);
         $responseArray = json_decode($response, true);
         $this->assertEquals('actualizado', $responseArray['name']);
     }
@@ -40,7 +40,7 @@ class UpdateCategoryTest extends TestCase
         $category = Category::factory()->create(['name' => 'test']);
         $category->refresh();
 
-        $this->controller->__invoke($this->request, $category->id);
+        $this->controller->__invoke($category->id, $this->request);
 
         $this->assertDatabaseHas('categories', [
             'name' => 'actualizado'

@@ -14,9 +14,9 @@ class DeleteProductController extends Controller
 
     }
 
-    public function __invoke($id_product)
+    public function __invoke($id)
     {
-        $this->deleteProductService->handle(new DeleteProductRequest(), $id_product);
+        $this->deleteProductService->handle(new DeleteProductRequest(), $id);
 
         return Product::all()->toJson();
     }

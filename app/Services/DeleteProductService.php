@@ -15,12 +15,12 @@ readonly class DeleteProductService
     {
     }
 
-    public function handle(DeleteProductRequest $param, $id_product): void
+    public function handle(DeleteProductRequest $param, $id): void
     {
         DB::beginTransaction();
 
         try {
-            $this->productRepository->delete($id_product);
+            $this->productRepository->delete($param, $id);
         }catch (Exception $e){
             DB::rollBack();
             Log::info($e->getMessage());

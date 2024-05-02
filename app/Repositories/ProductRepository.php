@@ -19,15 +19,13 @@ class ProductRepository
 
     public function create($data)
     {
-        Category::findOrFail($data['category_id']);
-
         $product = Product::create($data);
 
         $product->fresh();
         return $product;
     }
 
-    public function delete($id_product)
+    public function delete($param, $id_product)
     {
         $product = Product::findOrFail($id_product);
         $product->delete();
@@ -45,5 +43,12 @@ class ProductRepository
         $products = $category->products()->get();
 
         return $products;
+    }
+
+    public function update($data, $id)
+    {
+        $product = Product::findOrFail($id);
+        $product->update($data);
+        return $product;
     }
 }

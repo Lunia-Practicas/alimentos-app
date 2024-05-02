@@ -19,8 +19,10 @@ class CreateProductTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        $category = Category::factory()->create();
         $this->request = new Request([
             'name' => 'Test Product',
+            'category_id' => $category->id,
             'weight' => 10,
             'origin' => 'Spain',
             'price' => 23,
@@ -32,21 +34,29 @@ class CreateProductTest extends TestCase
 
     #[Test] public function test_create_product_db()
     {
-        $category = Category::factory()->create();
 
-        $this->controller->__invoke($this->request, $category->id);
+        $this->controller->__invoke($this->request);
 
         $this->assertDatabaseHas('products', [
             'name' => 'Test Product',
-            'category_id' => $category->id,
+
         ]);
     }
 
     public function test_can_not_create_product_not_exists_category()
     {
+        $this->request = new Request([
+            'name' => 'Test Product',
+            'category_id' => 3,
+            'weight' => 10,
+            'origin' => 'Spain',
+            'price' => 23,
+            'vegan' => true,
+            'gluten' => false
+        ]);
         $exceptionThrown = false;
         try {
-            $this->controller->__invoke($this->request, 1);
+            $this->controller->__invoke($this->request);
         } catch (\Exception $exception) {
             $exceptionThrown = true;
         }

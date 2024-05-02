@@ -13,7 +13,7 @@ class UpdateCategoryController extends Controller
 
     }
 
-    public function __invoke(Request $request, $id)
+    public function __invoke($id, Request $request)
     {
         $request->validate([
             'name' => 'required|unique:categories',

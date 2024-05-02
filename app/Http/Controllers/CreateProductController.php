@@ -13,10 +13,11 @@ class CreateProductController extends Controller
 
     }
 
-    public function __invoke(Request $request, $id)
+    public function __invoke(Request $request)
     {
         $request->validate([
             'name' => 'required|unique:products,name',
+            'category_id' => 'required|exists:categories,id',
             'weight' => 'required',
             'origin' => 'required',
             'price' => 'required',
@@ -26,12 +27,13 @@ class CreateProductController extends Controller
 
         $product = $this->createProductService->handle(new CreateProductRequest(
             $request->input('name'),
+            $request->input('category_id'),
             $request->input('weight'),
             $request->input('origin'),
             $request->input('price'),
             $request->input('vegan'),
             $request->input('gluten')
-        ), $id);
+        ));
 
         $product->fresh();
 

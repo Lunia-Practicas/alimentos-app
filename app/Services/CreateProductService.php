@@ -11,7 +11,7 @@ readonly class CreateProductService
     {
     }
 
-    public function handle(CreateProductRequest $request, $id)
+    public function handle(CreateProductRequest $request)
     {
         $data = [
             'name' => $request->name,
@@ -20,7 +20,7 @@ readonly class CreateProductService
             'price' => $request->price,
             'vegan' => $request->vegan,
             'gluten' => $request->gluten,
-            'category_id' => $id,
+            'category_id' => $request->category_id,
         ];
 
         return $this->productRepository->create($data);
