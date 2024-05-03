@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Repositories\ProductRepository;
 
-class ListAllProductsByCategoryIdService
+readonly class GetProductByIdService
 {
     public function __construct(private ProductRepository $productRepository)
     {
@@ -13,6 +13,6 @@ class ListAllProductsByCategoryIdService
 
     public function handle($param, $id)
     {
-        return $this->productRepository->listAllByCategoryId($id);
+        return $this->productRepository->getProductById($id);
     }
 }

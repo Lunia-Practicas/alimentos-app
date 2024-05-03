@@ -28,7 +28,7 @@ class CategoryRepository
         return $category;
     }
 
-    public function delete($data, $id)
+    public function delete($id)
     {
         $category = Category::findOrFail($id);
         $productsCount = Product::where('category_id', $category->id)->count();
@@ -39,7 +39,7 @@ class CategoryRepository
         $category->delete();
     }
 
-    public function listAll($request)
+    public function listAll()
     {
         return Category::all();
     }
@@ -49,6 +49,11 @@ class CategoryRepository
         $category = Category::findOrFail($id);
         $category->update($data);
         return $category;
+    }
+
+    public function getCategoryById($id)
+    {
+        return Category::findOrFail($id);
     }
 
 

@@ -16,7 +16,7 @@ class UpdateProductController extends Controller
     public function __invoke($id, Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:products,name',
+            'name' => 'required|unique:products,name,' . $id,
             'category_id' => 'required|exists:categories,id',
             'weight' => 'required',
             'origin' => 'required',

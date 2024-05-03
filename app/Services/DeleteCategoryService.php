@@ -20,7 +20,7 @@ readonly class DeleteCategoryService
         DB::beginTransaction();
 
         try {
-            $this->categoryRepository->delete($request, $id);
+            $this->categoryRepository->delete($id);
         } catch (Exception $e) {
             DB::rollBack();
             Log::info($e->getMessage());

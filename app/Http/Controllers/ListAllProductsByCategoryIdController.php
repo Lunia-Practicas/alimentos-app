@@ -6,7 +6,7 @@ use App\Services\ListAllProductsByCategoryIdRequest;
 use App\Services\ListAllProductsByCategoryIdService;
 use Illuminate\Http\Request;
 
-class ListAllProductsByIdCategoryController extends Controller
+class ListAllProductsByCategoryIdController extends Controller
 {
     public function __construct(private readonly ListAllProductsByCategoryIdService $listAllProductsByCategoryIdService)
     {

@@ -20,7 +20,7 @@ readonly class DeleteProductService
         DB::beginTransaction();
 
         try {
-            $this->productRepository->delete($param, $id);
+            $this->productRepository->delete($id);
         }catch (Exception $e){
             DB::rollBack();
             Log::info($e->getMessage());
