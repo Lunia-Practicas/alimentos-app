@@ -19,6 +19,11 @@ class SearchProductService
             'origin' => $request->origin,
             'vegan' => $request->vegan,
             'gluten' => $request->gluten,
+            'category_id' => $request->category_id,
+            'min_price' => $request->min_price,
+            'max_price' => $request->max_price,
+            'min_weight' => $request->min_weight,
+            'max_weight' => $request->max_weight,
         ];
         $resultProduct = [];
         $products = $this->productRepository->search($data);

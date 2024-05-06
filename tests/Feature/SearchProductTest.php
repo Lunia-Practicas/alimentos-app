@@ -49,6 +49,8 @@ class SearchProductTest extends TestCase
 
    #[Test] public function test_search_product_multiple_field()
    {
+       $categoryB = Category::factory()->create();
+
        Product::factory()->create([
            'name' => 'test',
            'origin' => 'Murcia',
@@ -68,13 +70,14 @@ class SearchProductTest extends TestCase
            'origin' => 'Murcia',
            'vegan' => false,
            'gluten' => false,
-           'category_id' => $this->category->id
+           'category_id' => $categoryB->id
        ]);
 
        $request = new Request([
            'origin' => 'Murcia',
            'vegan' => false,
            'gluten' => false,
+           'category_id' => $categoryB->id
        ]);
 
 

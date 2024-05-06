@@ -20,6 +20,11 @@ class SearchProductController extends Controller
             'origin' => 'nullable|string',
             'vegan' => 'nullable|boolean',
             'gluten' => 'nullable|boolean',
+            'category_id' => 'nullable|integer|exists:categories,id',
+            'min_price' => 'nullable|numeric|min:0',
+            'max_price' => 'nullable|numeric|min:0',
+            'min_weight' => 'nullable|numeric|min:0',
+            'max_weight' => 'nullable|numeric|min:0',
         ]);
 
         $products = $this->searchProductService->handle(new SearchProductRequest(
@@ -27,6 +32,12 @@ class SearchProductController extends Controller
             $request->input('origin'),
             $request->input('vegan'),
             $request->input('gluten'),
+            $request->input('category_id'),
+            $request->input('min_price'),
+            $request->input('max_price'),
+            $request->input('min_weight'),
+            $request->input('max_weight'),
+
         ));
 
 

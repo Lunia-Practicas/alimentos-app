@@ -78,6 +78,26 @@ class ProductRepository
             $products->where('gluten', $request['gluten']);
         }
 
+        if (!is_null($request['category_id'])) {
+            $products->where('category_id', $request['category_id']);
+        }
+
+        if (!is_null($request['min_price'])) {
+            $products->where('price', '>=', $request['min_price']);
+        }
+
+        if (!is_null($request['max_price'])) {
+            $products->where('price', '<=', $request['max_price']);
+        }
+
+        if (!is_null($request['min_weight'])) {
+            $products->where('weight', '>=', $request['min_weight']);
+        }
+
+        if (!is_null($request['max_weight'])) {
+            $products->where('weight', '<=', $request['max_weight']);
+        }
+
         return $products->get();
     }
 }
