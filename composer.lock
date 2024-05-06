@@ -4,8 +4,218 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "74ba1a70a8ffa438062df79e72d0210f",
+    "content-hash": "ae5863999bb48552b42fe0ee31083bb0",
     "packages": [
+        {
+            "name": "auth0/auth0-php",
+            "version": "8.11.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auth0/auth0-PHP.git",
+                "reference": "5d132ad4b3b95c5d5d342d09088d469568bfa627"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/auth0/auth0-PHP/zipball/5d132ad4b3b95c5d5d342d09088d469568bfa627",
+                "reference": "5d132ad4b3b95c5d5d342d09088d469568bfa627",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "php": "^8.1",
+                "php-http/multipart-stream-builder": "^1",
+                "psr-discovery/all": "^1",
+                "psr/http-client-implementation": "^1",
+                "psr/http-factory-implementation": "^1",
+                "psr/http-message-implementation": "^1"
+            },
+            "require-dev": {
+                "ergebnis/composer-normalize": "^2",
+                "friendsofphp/php-cs-fixer": "^3",
+                "mockery/mockery": "^1",
+                "pestphp/pest": "^2",
+                "phpstan/phpstan": "^1",
+                "phpstan/phpstan-strict-rules": "^1",
+                "psr-mock/http": "^1",
+                "rector/rector": "0.17.6",
+                "spatie/ray": "^1",
+                "symfony/cache": "^4 || ^5 || ^6",
+                "symfony/event-dispatcher": "^4 || ^5 || ^6",
+                "vimeo/psalm": "^5",
+                "wikimedia/composer-merge-plugin": "^2"
+            },
+            "suggest": {
+                "psr/cache-implementation": "(PSR-6 Cache) Improve performance by avoiding making redundant network requests.",
+                "psr/event-dispatcher-implementation": "(PSR-14 Event Dispatcher) Observe and react to events when they occur."
+            },
+            "type": "library",
+            "extra": {
+                "merge-plugin": {
+                    "ignore-duplicates": false,
+                    "include": [
+                        "composer.local.json"
+                    ],
+                    "merge-dev": true,
+                    "merge-extra": false,
+                    "merge-extra-deep": false,
+                    "merge-scripts": false,
+                    "recurse": true,
+                    "replace": true
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Auth0\\SDK\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Auth0",
+                    "email": "support@auth0.com",
+                    "homepage": "https://auth0.com/"
+                }
+            ],
+            "description": "PHP SDK for Auth0 Authentication and Management APIs.",
+            "homepage": "https://github.com/auth0/auth0-PHP",
+            "keywords": [
+                "Authentication",
+                "JSON Web Token",
+                "JWK",
+                "OpenId",
+                "api",
+                "auth",
+                "auth0",
+                "authorization",
+                "json web key",
+                "jwt",
+                "login",
+                "oauth",
+                "protect",
+                "secure"
+            ],
+            "support": {
+                "issues": "https://github.com/auth0/auth0-PHP/issues",
+                "source": "https://github.com/auth0/auth0-PHP/tree/8.11.1"
+            },
+            "time": "2024-01-11T15:28:10+00:00"
+        },
+        {
+            "name": "auth0/login",
+            "version": "7.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auth0/laravel-auth0.git",
+                "reference": "908ff13b7f13b62510a09f40399b69ff301f03d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/auth0/laravel-auth0/zipball/908ff13b7f13b62510a09f40399b69ff301f03d8",
+                "reference": "908ff13b7f13b62510a09f40399b69ff301f03d8",
+                "shasum": ""
+            },
+            "require": {
+                "auth0/auth0-php": "^8.10",
+                "ext-json": "*",
+                "illuminate/contracts": "^11",
+                "illuminate/http": "^11",
+                "illuminate/support": "^11",
+                "php": "^8.2",
+                "psr-discovery/all": "^1",
+                "psr/cache": "^2 || ^3"
+            },
+            "require-dev": {
+                "ergebnis/composer-normalize": "^2",
+                "friendsofphp/php-cs-fixer": "^3",
+                "larastan/larastan": "^2",
+                "mockery/mockery": "^1",
+                "orchestra/testbench": "^9",
+                "pestphp/pest": "^2",
+                "pestphp/pest-plugin-laravel": "^2",
+                "phpstan/phpstan": "^1",
+                "phpstan/phpstan-strict-rules": "^1",
+                "psalm/plugin-laravel": "^2.10",
+                "psr-mock/http": "^1",
+                "rector/rector": "^1",
+                "squizlabs/php_codesniffer": "^3",
+                "symfony/cache": "^6 || ^7",
+                "vimeo/psalm": "^5",
+                "wikimedia/composer-merge-plugin": "^2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Auth0": "Auth0\\Laravel\\Facade\\Auth0"
+                    },
+                    "providers": [
+                        "Auth0\\Laravel\\ServiceProvider"
+                    ]
+                },
+                "merge-plugin": {
+                    "ignore-duplicates": false,
+                    "include": [
+                        "composer.local.json"
+                    ],
+                    "merge-dev": true,
+                    "merge-extra": false,
+                    "merge-extra-deep": false,
+                    "merge-scripts": false,
+                    "recurse": true,
+                    "replace": true
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Auth0\\Laravel\\": [
+                        "src/",
+                        "deprecated/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Auth0",
+                    "email": "support@auth0.com",
+                    "homepage": "https://auth0.com/"
+                }
+            ],
+            "description": "Auth0 Laravel SDK. Straight-forward and tested methods for implementing authentication, and accessing Auth0's Management API endpoints.",
+            "homepage": "https://github.com/auth0/laravel-auth0",
+            "keywords": [
+                "Authentication",
+                "JSON Web Token",
+                "JWK",
+                "OpenId",
+                "api",
+                "auth",
+                "auth0",
+                "authorization",
+                "json web key",
+                "jwt",
+                "laravel",
+                "login",
+                "oauth",
+                "protect",
+                "secure"
+            ],
+            "support": {
+                "email": "support@auth0.com",
+                "forum": "https://community.auth0.com",
+                "issues": "https://github.com/auth0/laravel-auth0/issues",
+                "source": "https://github.com/auth0/laravel-auth0"
+            },
+            "time": "2024-04-02T04:40:22+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.12.1",
@@ -134,6 +344,87 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "composer/semver",
+            "version": "3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/semver.git",
+                "reference": "35e8d0af4486141bc745f23a29cc2091eb624a32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/semver/zipball/35e8d0af4486141bc745f23a29cc2091eb624a32",
+                "reference": "35e8d0af4486141bc745f23a29cc2091eb624a32",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.2 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.4",
+                "symfony/phpunit-bridge": "^4.2 || ^5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Semver\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nils Adermann",
+                    "email": "naderman@naderman.de",
+                    "homepage": "http://www.naderman.de"
+                },
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                },
+                {
+                    "name": "Rob Bast",
+                    "email": "rob.bast@gmail.com",
+                    "homepage": "http://robbast.nl"
+                }
+            ],
+            "description": "Semver library that offers utilities, version constraint parsing and validation.",
+            "keywords": [
+                "semantic",
+                "semver",
+                "validation",
+                "versioning"
+            ],
+            "support": {
+                "irc": "ircs://irc.libera.chat:6697/composer",
+                "issues": "https://github.com/composer/semver/issues",
+                "source": "https://github.com/composer/semver/tree/3.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-08-31T09:50:34+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -1052,16 +1343,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v11.5.0",
+            "version": "v11.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "e3c24268f1404805e15099b9f035fe310cb30753"
+                "reference": "e090ee638ebd4ce221d8bad43b49bbf59ea70ae5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/e3c24268f1404805e15099b9f035fe310cb30753",
-                "reference": "e3c24268f1404805e15099b9f035fe310cb30753",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/e090ee638ebd4ce221d8bad43b49bbf59ea70ae5",
+                "reference": "e090ee638ebd4ce221d8bad43b49bbf59ea70ae5",
                 "shasum": ""
             },
             "require": {
@@ -1164,7 +1455,7 @@
                 "league/flysystem-sftp-v3": "^3.0",
                 "mockery/mockery": "^1.6",
                 "nyholm/psr7": "^1.2",
-                "orchestra/testbench-core": "^9.0.6",
+                "orchestra/testbench-core": "^9.0.15",
                 "pda/pheanstalk": "^5.0",
                 "phpstan/phpstan": "^1.4.7",
                 "phpunit/phpunit": "^10.5|^11.0",
@@ -1253,20 +1544,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-04-23T15:11:31+00:00"
+            "time": "2024-04-30T13:30:08+00:00"
         },
         {
             "name": "laravel/prompts",
-            "version": "v0.1.20",
+            "version": "v0.1.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/prompts.git",
-                "reference": "bf9a360c484976692de0f3792f30066f4f4b34a2"
+                "reference": "23ea808e8a145653e0ab29e30d4385e49f40a920"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/prompts/zipball/bf9a360c484976692de0f3792f30066f4f4b34a2",
-                "reference": "bf9a360c484976692de0f3792f30066f4f4b34a2",
+                "url": "https://api.github.com/repos/laravel/prompts/zipball/23ea808e8a145653e0ab29e30d4385e49f40a920",
+                "reference": "23ea808e8a145653e0ab29e30d4385e49f40a920",
                 "shasum": ""
             },
             "require": {
@@ -1306,11 +1597,12 @@
             "license": [
                 "MIT"
             ],
+            "description": "Add beautiful and user-friendly forms to your command-line applications.",
             "support": {
                 "issues": "https://github.com/laravel/prompts/issues",
-                "source": "https://github.com/laravel/prompts/tree/v0.1.20"
+                "source": "https://github.com/laravel/prompts/tree/v0.1.21"
             },
-            "time": "2024-04-18T00:45:25+00:00"
+            "time": "2024-04-30T12:46:16+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -1934,16 +2226,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.3.0",
+            "version": "3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "7219739c4e01d4680c980545821733b6ed8ee880"
+                "reference": "8ff64b92c1b1ec84fcde9f8bb9ff2ca34cb8a77a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/7219739c4e01d4680c980545821733b6ed8ee880",
-                "reference": "7219739c4e01d4680c980545821733b6ed8ee880",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8ff64b92c1b1ec84fcde9f8bb9ff2ca34cb8a77a",
+                "reference": "8ff64b92c1b1ec84fcde9f8bb9ff2ca34cb8a77a",
                 "shasum": ""
             },
             "require": {
@@ -2036,7 +2328,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-18T16:35:06+00:00"
+            "time": "2024-05-01T06:54:22+00:00"
         },
         {
             "name": "nette/schema",
@@ -2333,6 +2625,141 @@
             "time": "2024-03-06T16:17:14+00:00"
         },
         {
+            "name": "php-http/discovery",
+            "version": "1.19.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-http/discovery.git",
+                "reference": "0700efda8d7526335132360167315fdab3aeb599"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/0700efda8d7526335132360167315fdab3aeb599",
+                "reference": "0700efda8d7526335132360167315fdab3aeb599",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0|^2.0",
+                "php": "^7.1 || ^8.0"
+            },
+            "conflict": {
+                "nyholm/psr7": "<1.0",
+                "zendframework/zend-diactoros": "*"
+            },
+            "provide": {
+                "php-http/async-client-implementation": "*",
+                "php-http/client-implementation": "*",
+                "psr/http-client-implementation": "*",
+                "psr/http-factory-implementation": "*",
+                "psr/http-message-implementation": "*"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0.2|^2.0",
+                "graham-campbell/phpspec-skip-example-extension": "^5.0",
+                "php-http/httplug": "^1.0 || ^2.0",
+                "php-http/message-factory": "^1.0",
+                "phpspec/phpspec": "^5.1 || ^6.1 || ^7.3",
+                "sebastian/comparator": "^3.0.5 || ^4.0.8",
+                "symfony/phpunit-bridge": "^6.4.4 || ^7.0.1"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Http\\Discovery\\Composer\\Plugin",
+                "plugin-optional": true
+            },
+            "autoload": {
+                "psr-4": {
+                    "Http\\Discovery\\": "src/"
+                },
+                "exclude-from-classmap": [
+                    "src/Composer/Plugin.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com"
+                }
+            ],
+            "description": "Finds and installs PSR-7, PSR-17, PSR-18 and HTTPlug implementations",
+            "homepage": "http://php-http.org",
+            "keywords": [
+                "adapter",
+                "client",
+                "discovery",
+                "factory",
+                "http",
+                "message",
+                "psr17",
+                "psr7"
+            ],
+            "support": {
+                "issues": "https://github.com/php-http/discovery/issues",
+                "source": "https://github.com/php-http/discovery/tree/1.19.4"
+            },
+            "time": "2024-03-29T13:00:05+00:00"
+        },
+        {
+            "name": "php-http/multipart-stream-builder",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-http/multipart-stream-builder.git",
+                "reference": "f5938fd135d9fa442cc297dc98481805acfe2b6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-http/multipart-stream-builder/zipball/f5938fd135d9fa442cc297dc98481805acfe2b6a",
+                "reference": "f5938fd135d9fa442cc297dc98481805acfe2b6a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1 || ^8.0",
+                "php-http/discovery": "^1.15",
+                "psr/http-factory-implementation": "^1.0"
+            },
+            "require-dev": {
+                "nyholm/psr7": "^1.0",
+                "php-http/message": "^1.5",
+                "php-http/message-factory": "^1.0.2",
+                "phpunit/phpunit": "^7.5.15 || ^8.5 || ^9.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Http\\Message\\MultipartStream\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com"
+                }
+            ],
+            "description": "A builder class that help you create a multipart stream",
+            "homepage": "http://php-http.org",
+            "keywords": [
+                "factory",
+                "http",
+                "message",
+                "multipart stream",
+                "stream"
+            ],
+            "support": {
+                "issues": "https://github.com/php-http/multipart-stream-builder/issues",
+                "source": "https://github.com/php-http/multipart-stream-builder/tree/1.3.0"
+            },
+            "time": "2023-04-28T14:10:22+00:00"
+        },
+        {
             "name": "phpoption/phpoption",
             "version": "1.9.2",
             "source": {
@@ -2406,6 +2833,645 @@
                 }
             ],
             "time": "2023-11-12T21:59:55+00:00"
+        },
+        {
+            "name": "psr-discovery/all",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/psr-discovery/all.git",
+                "reference": "e353ca0cac46b2e954f4a3ee3a13f0de8be7b87b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/psr-discovery/all/zipball/e353ca0cac46b2e954f4a3ee3a13f0de8be7b87b",
+                "reference": "e353ca0cac46b2e954f4a3ee3a13f0de8be7b87b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "psr-discovery/cache-implementations": "^1.0",
+                "psr-discovery/container-implementations": "^1.0",
+                "psr-discovery/event-dispatcher-implementations": "^1.0",
+                "psr-discovery/http-client-implementations": "^1.0",
+                "psr-discovery/http-factory-implementations": "^1.0",
+                "psr-discovery/log-implementations": "^1.0"
+            },
+            "type": "metapackage",
+            "extra": {
+                "merge-plugin": {
+                    "ignore-duplicates": false,
+                    "include": [
+                        "composer.local.json"
+                    ],
+                    "merge-dev": true,
+                    "merge-extra": false,
+                    "merge-extra-deep": false,
+                    "merge-scripts": false,
+                    "recurse": true,
+                    "replace": true
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PsrDiscovery\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Sims",
+                    "email": "hello@evansims.com",
+                    "homepage": "https://evansims.com/"
+                }
+            ],
+            "description": "Lightweight library that discovers available PSR implementations by searching for a list of well-known classes that implement the relevant interface, and returns an instance of the first one that is found.",
+            "homepage": "https://github.com/psr-discovery",
+            "keywords": [
+                "PSR-11",
+                "discovery",
+                "psr",
+                "psr-14",
+                "psr-17",
+                "psr-18",
+                "psr-3",
+                "psr-6"
+            ],
+            "support": {
+                "source": "https://github.com/psr-discovery/all/tree/1.0.1"
+            },
+            "time": "2024-03-04T21:20:17+00:00"
+        },
+        {
+            "name": "psr-discovery/cache-implementations",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/psr-discovery/cache-implementations.git",
+                "reference": "ebede0af34a7fd3c5564809e659ee69c0ab85ff6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/psr-discovery/cache-implementations/zipball/ebede0af34a7fd3c5564809e659ee69c0ab85ff6",
+                "reference": "ebede0af34a7fd3c5564809e659ee69c0ab85ff6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "psr-discovery/discovery": "^1.0",
+                "psr/cache": "^1.0 | ^2.0 | ^3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "mockery/mockery": "^1.5",
+                "pestphp/pest": "^2.0",
+                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan-strict-rules": "^1.5",
+                "rector/rector": "^0.15",
+                "vimeo/psalm": "^5.8",
+                "wikimedia/composer-merge-plugin": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "merge-plugin": {
+                    "ignore-duplicates": false,
+                    "include": [
+                        "composer.local.json"
+                    ],
+                    "merge-dev": true,
+                    "merge-extra": false,
+                    "merge-extra-deep": false,
+                    "merge-scripts": false,
+                    "recurse": true,
+                    "replace": true
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PsrDiscovery\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Sims",
+                    "email": "hello@evansims.com",
+                    "homepage": "https://evansims.com/"
+                }
+            ],
+            "description": "Lightweight library that discovers available PSR-6 Cache implementations by searching for a list of well-known classes that implement the relevant interface, and returns an instance of the first one that is found.",
+            "homepage": "https://github.com/psr-discovery",
+            "keywords": [
+                "cache",
+                "cache-implementation",
+                "discovery",
+                "psr",
+                "psr-6"
+            ],
+            "support": {
+                "issues": "https://github.com/psr-discovery/cache-implementations/issues",
+                "source": "https://github.com/psr-discovery/cache-implementations/tree/1.1.1"
+            },
+            "time": "2024-03-04T21:22:36+00:00"
+        },
+        {
+            "name": "psr-discovery/container-implementations",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/psr-discovery/container-implementations.git",
+                "reference": "728a452b32b0bb60c4bac43b18db2e3105bb8d7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/psr-discovery/container-implementations/zipball/728a452b32b0bb60c4bac43b18db2e3105bb8d7e",
+                "reference": "728a452b32b0bb60c4bac43b18db2e3105bb8d7e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "psr-discovery/discovery": "^1.0",
+                "psr/container": "^1.0 | ^2.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "mockery/mockery": "^1.5",
+                "pestphp/pest": "^2.0",
+                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan-strict-rules": "^1.5",
+                "rector/rector": "^0.15",
+                "vimeo/psalm": "^5.8",
+                "wikimedia/composer-merge-plugin": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "merge-plugin": {
+                    "ignore-duplicates": false,
+                    "include": [
+                        "composer.local.json"
+                    ],
+                    "merge-dev": true,
+                    "merge-extra": false,
+                    "merge-extra-deep": false,
+                    "merge-scripts": false,
+                    "recurse": true,
+                    "replace": true
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PsrDiscovery\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Sims",
+                    "email": "hello@evansims.com",
+                    "homepage": "https://evansims.com/"
+                }
+            ],
+            "description": "Lightweight library that discovers available PSR-11 Container implementations by searching for a list of well-known classes that implement the relevant interface, and returns an instance of the first one that is found.",
+            "homepage": "https://github.com/psr-discovery/http-client-implementations",
+            "keywords": [
+                "PSR-11",
+                "discovery",
+                "psr"
+            ],
+            "support": {
+                "issues": "https://github.com/psr-discovery/container-implementations/issues",
+                "source": "https://github.com/psr-discovery/container-implementations/tree/1.1.1"
+            },
+            "time": "2024-03-04T21:24:05+00:00"
+        },
+        {
+            "name": "psr-discovery/discovery",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/psr-discovery/discovery.git",
+                "reference": "9fb31dca2030accd9d3de21fb8806478e9df5b2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/psr-discovery/discovery/zipball/9fb31dca2030accd9d3de21fb8806478e9df5b2b",
+                "reference": "9fb31dca2030accd9d3de21fb8806478e9df5b2b",
+                "shasum": ""
+            },
+            "require": {
+                "composer/semver": "^3.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "mockery/mockery": "^1.5",
+                "pestphp/pest": "^2.0",
+                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan-strict-rules": "^1.5",
+                "rector/rector": "^0.15",
+                "vimeo/psalm": "^5.8",
+                "wikimedia/composer-merge-plugin": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "merge-plugin": {
+                    "ignore-duplicates": false,
+                    "include": [
+                        "composer.local.json"
+                    ],
+                    "merge-dev": true,
+                    "merge-extra": false,
+                    "merge-extra-deep": false,
+                    "merge-scripts": false,
+                    "recurse": true,
+                    "replace": true
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PsrDiscovery\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Sims",
+                    "email": "hello@evansims.com",
+                    "homepage": "https://evansims.com/"
+                }
+            ],
+            "description": "Lightweight library that discovers available PSR implementations by searching for a list of well-known classes that implement the relevant interfaces, and returning an instance of the first one that is found.",
+            "homepage": "https://github.com/psr-discovery/discovery",
+            "keywords": [
+                "PSR-11",
+                "discovery",
+                "psr",
+                "psr-14",
+                "psr-17",
+                "psr-18",
+                "psr-3",
+                "psr-6"
+            ],
+            "support": {
+                "issues": "https://github.com/psr-discovery/discovery/issues",
+                "source": "https://github.com/psr-discovery/discovery/tree/1.1.1"
+            },
+            "time": "2024-03-04T21:26:05+00:00"
+        },
+        {
+            "name": "psr-discovery/event-dispatcher-implementations",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/psr-discovery/event-dispatcher-implementations.git",
+                "reference": "9033bb984613703e4c4f795ef0657184dc1c70eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/psr-discovery/event-dispatcher-implementations/zipball/9033bb984613703e4c4f795ef0657184dc1c70eb",
+                "reference": "9033bb984613703e4c4f795ef0657184dc1c70eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "psr-discovery/discovery": "^1.0",
+                "psr/event-dispatcher": "^1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "mockery/mockery": "^1.5",
+                "pestphp/pest": "^2.0",
+                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan-strict-rules": "^1.5",
+                "rector/rector": "^0.15",
+                "vimeo/psalm": "^5.8",
+                "wikimedia/composer-merge-plugin": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "merge-plugin": {
+                    "ignore-duplicates": false,
+                    "include": [
+                        "composer.local.json"
+                    ],
+                    "merge-dev": true,
+                    "merge-extra": false,
+                    "merge-extra-deep": false,
+                    "merge-scripts": false,
+                    "recurse": true,
+                    "replace": true
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PsrDiscovery\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Sims",
+                    "email": "hello@evansims.com",
+                    "homepage": "https://evansims.com/"
+                }
+            ],
+            "description": "Lightweight library that discovers available PSR-14 Event Dispatcher implementations by searching for a list of well-known classes that implement the relevant interface, and returns an instance of the first one that is found.",
+            "homepage": "https://github.com/psr-discovery/http-client-implementations",
+            "keywords": [
+                "discovery",
+                "psr",
+                "psr-18"
+            ],
+            "support": {
+                "issues": "https://github.com/psr-discovery/event-dispatcher-implementations/issues",
+                "source": "https://github.com/psr-discovery/event-dispatcher-implementations/tree/1.1.1"
+            },
+            "time": "2024-03-04T21:27:10+00:00"
+        },
+        {
+            "name": "psr-discovery/http-client-implementations",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/psr-discovery/http-client-implementations.git",
+                "reference": "a05c54087d13504d8e48c27395fbab638fb0a114"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/psr-discovery/http-client-implementations/zipball/a05c54087d13504d8e48c27395fbab638fb0a114",
+                "reference": "a05c54087d13504d8e48c27395fbab638fb0a114",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "psr-discovery/discovery": "^1.0",
+                "psr/http-client": "^1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "mockery/mockery": "^1.5",
+                "pestphp/pest": "^2.0",
+                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan-strict-rules": "^1.5",
+                "rector/rector": "^0.15",
+                "vimeo/psalm": "^5.8",
+                "wikimedia/composer-merge-plugin": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "merge-plugin": {
+                    "ignore-duplicates": false,
+                    "include": [
+                        "composer.local.json"
+                    ],
+                    "merge-dev": true,
+                    "merge-extra": false,
+                    "merge-extra-deep": false,
+                    "merge-scripts": false,
+                    "recurse": true,
+                    "replace": true
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PsrDiscovery\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Sims",
+                    "email": "hello@evansims.com",
+                    "homepage": "https://evansims.com/"
+                }
+            ],
+            "description": "Lightweight library that discovers available PSR-18 HTTP Client implementations by searching for a list of well-known classes that implement the relevant interface, and returns an instance of the first one that is found.",
+            "homepage": "https://github.com/psr-discovery/http-client-implementations",
+            "keywords": [
+                "discovery",
+                "psr",
+                "psr-18"
+            ],
+            "support": {
+                "issues": "https://github.com/psr-discovery/http-client-implementations/issues",
+                "source": "https://github.com/psr-discovery/http-client-implementations/tree/1.2.0"
+            },
+            "time": "2024-03-16T05:29:47+00:00"
+        },
+        {
+            "name": "psr-discovery/http-factory-implementations",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/psr-discovery/http-factory-implementations.git",
+                "reference": "4ee07ae795b794e61578db32b5422a780b01b833"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/psr-discovery/http-factory-implementations/zipball/4ee07ae795b794e61578db32b5422a780b01b833",
+                "reference": "4ee07ae795b794e61578db32b5422a780b01b833",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "psr-discovery/discovery": "^1.1",
+                "psr/http-factory": "^1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "mockery/mockery": "^1.5",
+                "pestphp/pest": "^2.0",
+                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan-strict-rules": "^1.5",
+                "rector/rector": "^0.15",
+                "vimeo/psalm": "^5.8",
+                "wikimedia/composer-merge-plugin": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "merge-plugin": {
+                    "ignore-duplicates": false,
+                    "include": [
+                        "composer.local.json"
+                    ],
+                    "merge-dev": true,
+                    "merge-extra": false,
+                    "merge-extra-deep": false,
+                    "merge-scripts": false,
+                    "recurse": true,
+                    "replace": true
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PsrDiscovery\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Sims",
+                    "email": "hello@evansims.com",
+                    "homepage": "https://evansims.com/"
+                }
+            ],
+            "description": "Lightweight library that discovers available PSR-17 HTTP Factory implementations by searching for a list of well-known classes that implement the relevant interface, and returns an instance of the first one that is found.",
+            "homepage": "https://github.com/psr-discovery/http-factory-implementations",
+            "keywords": [
+                "discovery",
+                "psr",
+                "psr-18"
+            ],
+            "support": {
+                "issues": "https://github.com/psr-discovery/http-factory-implementations/issues",
+                "source": "https://github.com/psr-discovery/http-factory-implementations/tree/1.1.1"
+            },
+            "time": "2024-03-04T21:31:16+00:00"
+        },
+        {
+            "name": "psr-discovery/log-implementations",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/psr-discovery/log-implementations.git",
+                "reference": "384894384663fa5e1b2186112fb8ffe3f81a0b22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/psr-discovery/log-implementations/zipball/384894384663fa5e1b2186112fb8ffe3f81a0b22",
+                "reference": "384894384663fa5e1b2186112fb8ffe3f81a0b22",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "psr-discovery/discovery": "^1.0",
+                "psr/log": "^1.0 | ^2.0 | ^3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "mockery/mockery": "^1.5",
+                "pestphp/pest": "^2.0",
+                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan-strict-rules": "^1.5",
+                "rector/rector": "^0.15",
+                "vimeo/psalm": "^5.8",
+                "wikimedia/composer-merge-plugin": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "merge-plugin": {
+                    "ignore-duplicates": false,
+                    "include": [
+                        "composer.local.json"
+                    ],
+                    "merge-dev": true,
+                    "merge-extra": false,
+                    "merge-extra-deep": false,
+                    "merge-scripts": false,
+                    "recurse": true,
+                    "replace": true
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PsrDiscovery\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Sims",
+                    "email": "hello@evansims.com",
+                    "homepage": "https://evansims.com/"
+                }
+            ],
+            "description": "Lightweight library that discovers available PSR-3 Log implementations by searching for a list of well-known classes that implement the relevant interface, and returns an instance of the first one that is found.",
+            "homepage": "https://github.com/psr-discovery",
+            "keywords": [
+                "discovery",
+                "log",
+                "log-implementation",
+                "psr",
+                "psr-3"
+            ],
+            "support": {
+                "issues": "https://github.com/psr-discovery/log-implementations/issues",
+                "source": "https://github.com/psr-discovery/log-implementations/tree/1.0.1"
+            },
+            "time": "2024-03-04T21:32:27+00:00"
+        },
+        {
+            "name": "psr/cache",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for caching libraries",
+            "keywords": [
+                "cache",
+                "psr",
+                "psr-6"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/cache/tree/3.0.0"
+            },
+            "time": "2021-02-03T23:26:27+00:00"
         },
         {
             "name": "psr/clock",
@@ -3125,16 +4191,16 @@
         },
         {
             "name": "symfony/clock",
-            "version": "v7.0.5",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/clock.git",
-                "reference": "8b9d08887353d627d5f6c3bf3373b398b49051c2"
+                "reference": "2008671acb4a30b01c453de193cf9c80549ebda6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/clock/zipball/8b9d08887353d627d5f6c3bf3373b398b49051c2",
-                "reference": "8b9d08887353d627d5f6c3bf3373b398b49051c2",
+                "url": "https://api.github.com/repos/symfony/clock/zipball/2008671acb4a30b01c453de193cf9c80549ebda6",
+                "reference": "2008671acb4a30b01c453de193cf9c80549ebda6",
                 "shasum": ""
             },
             "require": {
@@ -3179,7 +4245,7 @@
                 "time"
             ],
             "support": {
-                "source": "https://github.com/symfony/clock/tree/v7.0.5"
+                "source": "https://github.com/symfony/clock/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -3195,20 +4261,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-02T12:46:12+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/console",
-            "version": "v7.0.6",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "fde915cd8e7eb99b3d531d3d5c09531429c3f9e5"
+                "reference": "c981e0e9380ce9f146416bde3150c79197ce9986"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/fde915cd8e7eb99b3d531d3d5c09531429c3f9e5",
-                "reference": "fde915cd8e7eb99b3d531d3d5c09531429c3f9e5",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c981e0e9380ce9f146416bde3150c79197ce9986",
+                "reference": "c981e0e9380ce9f146416bde3150c79197ce9986",
                 "shasum": ""
             },
             "require": {
@@ -3272,7 +4338,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v7.0.6"
+                "source": "https://github.com/symfony/console/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -3288,20 +4354,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-01T11:04:53+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/css-selector",
-            "version": "v7.0.3",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "ec60a4edf94e63b0556b6a0888548bb400a3a3be"
+                "reference": "b08a4ad89e84b29cec285b7b1f781a7ae51cf4bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/ec60a4edf94e63b0556b6a0888548bb400a3a3be",
-                "reference": "ec60a4edf94e63b0556b6a0888548bb400a3a3be",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/b08a4ad89e84b29cec285b7b1f781a7ae51cf4bc",
+                "reference": "b08a4ad89e84b29cec285b7b1f781a7ae51cf4bc",
                 "shasum": ""
             },
             "require": {
@@ -3337,7 +4403,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v7.0.3"
+                "source": "https://github.com/symfony/css-selector/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -3353,20 +4419,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-23T15:02:46+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.4.0",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "7c3aff79d10325257a001fcf92d991f24fc967cf"
+                "reference": "0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/7c3aff79d10325257a001fcf92d991f24fc967cf",
-                "reference": "7c3aff79d10325257a001fcf92d991f24fc967cf",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1",
+                "reference": "0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1",
                 "shasum": ""
             },
             "require": {
@@ -3375,7 +4441,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "3.4-dev"
+                    "dev-main": "3.5-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -3404,7 +4470,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.4.0"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.5.0"
             },
             "funding": [
                 {
@@ -3420,20 +4486,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-23T14:45:45+00:00"
+            "time": "2024-04-18T09:32:20+00:00"
         },
         {
             "name": "symfony/error-handler",
-            "version": "v7.0.6",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/error-handler.git",
-                "reference": "46a4cc138f799886d4bd70477c55c699d3e9dfc8"
+                "reference": "cf97429887e40480c847bfeb6c3991e1e2c086ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/error-handler/zipball/46a4cc138f799886d4bd70477c55c699d3e9dfc8",
-                "reference": "46a4cc138f799886d4bd70477c55c699d3e9dfc8",
+                "url": "https://api.github.com/repos/symfony/error-handler/zipball/cf97429887e40480c847bfeb6c3991e1e2c086ab",
+                "reference": "cf97429887e40480c847bfeb6c3991e1e2c086ab",
                 "shasum": ""
             },
             "require": {
@@ -3479,7 +4545,7 @@
             "description": "Provides tools to manage errors and ease debugging PHP code",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/error-handler/tree/v7.0.6"
+                "source": "https://github.com/symfony/error-handler/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -3495,20 +4561,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-19T11:57:22+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v7.0.3",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "834c28d533dd0636f910909d01b9ff45cc094b5e"
+                "reference": "db2a7fab994d67d92356bb39c367db115d9d30f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/834c28d533dd0636f910909d01b9ff45cc094b5e",
-                "reference": "834c28d533dd0636f910909d01b9ff45cc094b5e",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/db2a7fab994d67d92356bb39c367db115d9d30f9",
+                "reference": "db2a7fab994d67d92356bb39c367db115d9d30f9",
                 "shasum": ""
             },
             "require": {
@@ -3559,7 +4625,7 @@
             "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/event-dispatcher/tree/v7.0.3"
+                "source": "https://github.com/symfony/event-dispatcher/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -3575,20 +4641,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-23T15:02:46+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/event-dispatcher-contracts",
-            "version": "v3.4.2",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher-contracts.git",
-                "reference": "4e64b49bf370ade88e567de29465762e316e4224"
+                "reference": "8f93aec25d41b72493c6ddff14e916177c9efc50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/4e64b49bf370ade88e567de29465762e316e4224",
-                "reference": "4e64b49bf370ade88e567de29465762e316e4224",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/8f93aec25d41b72493c6ddff14e916177c9efc50",
+                "reference": "8f93aec25d41b72493c6ddff14e916177c9efc50",
                 "shasum": ""
             },
             "require": {
@@ -3598,7 +4664,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "3.4-dev"
+                    "dev-main": "3.5-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -3635,7 +4701,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/event-dispatcher-contracts/tree/v3.4.2"
+                "source": "https://github.com/symfony/event-dispatcher-contracts/tree/v3.5.0"
             },
             "funding": [
                 {
@@ -3651,20 +4717,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-23T14:51:35+00:00"
+            "time": "2024-04-18T09:32:20+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v7.0.0",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "6e5688d69f7cfc4ed4a511e96007e06c2d34ce56"
+                "reference": "4d58f0f4fe95a30d7b538d71197135483560b97c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/6e5688d69f7cfc4ed4a511e96007e06c2d34ce56",
-                "reference": "6e5688d69f7cfc4ed4a511e96007e06c2d34ce56",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/4d58f0f4fe95a30d7b538d71197135483560b97c",
+                "reference": "4d58f0f4fe95a30d7b538d71197135483560b97c",
                 "shasum": ""
             },
             "require": {
@@ -3699,7 +4765,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v7.0.0"
+                "source": "https://github.com/symfony/finder/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -3715,20 +4781,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-10-31T17:59:56+00:00"
+            "time": "2024-04-28T11:44:19+00:00"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v7.0.6",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "8789625dcf36e5fbf753014678a1e090f1bc759c"
+                "reference": "0194e064b8bdc29381462f790bab04e1cac8fdc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/8789625dcf36e5fbf753014678a1e090f1bc759c",
-                "reference": "8789625dcf36e5fbf753014678a1e090f1bc759c",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/0194e064b8bdc29381462f790bab04e1cac8fdc8",
+                "reference": "0194e064b8bdc29381462f790bab04e1cac8fdc8",
                 "shasum": ""
             },
             "require": {
@@ -3776,7 +4842,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/v7.0.6"
+                "source": "https://github.com/symfony/http-foundation/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -3792,20 +4858,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-19T11:46:48+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v7.0.6",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "34c872391046d59af804af62d4573b829cfe4824"
+                "reference": "e07bb9bd86e7cd8ba2d3d9c618eec9d1bbe06d25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/34c872391046d59af804af62d4573b829cfe4824",
-                "reference": "34c872391046d59af804af62d4573b829cfe4824",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/e07bb9bd86e7cd8ba2d3d9c618eec9d1bbe06d25",
+                "reference": "e07bb9bd86e7cd8ba2d3d9c618eec9d1bbe06d25",
                 "shasum": ""
             },
             "require": {
@@ -3859,6 +4925,7 @@
                 "symfony/translation-contracts": "^2.5|^3",
                 "symfony/uid": "^6.4|^7.0",
                 "symfony/validator": "^6.4|^7.0",
+                "symfony/var-dumper": "^6.4|^7.0",
                 "symfony/var-exporter": "^6.4|^7.0",
                 "twig/twig": "^3.0.4"
             },
@@ -3888,7 +4955,7 @@
             "description": "Provides a structured process for converting a Request into a Response",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-kernel/tree/v7.0.6"
+                "source": "https://github.com/symfony/http-kernel/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -3904,20 +4971,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-03T06:12:25+00:00"
+            "time": "2024-04-29T12:20:25+00:00"
         },
         {
             "name": "symfony/mailer",
-            "version": "v7.0.6",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mailer.git",
-                "reference": "eb0c3187c7ddfde12d8aa0e1fa5fb29e730a41e0"
+                "reference": "4ff41a7c7998a88cfdc31b5841ef64d9246fc56a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/eb0c3187c7ddfde12d8aa0e1fa5fb29e730a41e0",
-                "reference": "eb0c3187c7ddfde12d8aa0e1fa5fb29e730a41e0",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/4ff41a7c7998a88cfdc31b5841ef64d9246fc56a",
+                "reference": "4ff41a7c7998a88cfdc31b5841ef64d9246fc56a",
                 "shasum": ""
             },
             "require": {
@@ -3968,7 +5035,7 @@
             "description": "Helps sending emails",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/mailer/tree/v7.0.6"
+                "source": "https://github.com/symfony/mailer/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -3984,20 +5051,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-28T09:20:36+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/mime",
-            "version": "v7.0.6",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "99362408c9abdf8c7cadcf0529b6fc8b16f5ace2"
+                "reference": "3adbf110c306546f6f00337f421d2edca0e8d3c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/99362408c9abdf8c7cadcf0529b6fc8b16f5ace2",
-                "reference": "99362408c9abdf8c7cadcf0529b6fc8b16f5ace2",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/3adbf110c306546f6f00337f421d2edca0e8d3c0",
+                "reference": "3adbf110c306546f6f00337f421d2edca0e8d3c0",
                 "shasum": ""
             },
             "require": {
@@ -4052,7 +5119,7 @@
                 "mime-type"
             ],
             "support": {
-                "source": "https://github.com/symfony/mime/tree/v7.0.6"
+                "source": "https://github.com/symfony/mime/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -4068,7 +5135,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-21T19:37:36+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -4783,16 +5850,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v7.0.4",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "0e7727191c3b71ebec6d529fa0e50a01ca5679e9"
+                "reference": "3839e56b94dd1dbd13235d27504e66baf23faba0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/0e7727191c3b71ebec6d529fa0e50a01ca5679e9",
-                "reference": "0e7727191c3b71ebec6d529fa0e50a01ca5679e9",
+                "url": "https://api.github.com/repos/symfony/process/zipball/3839e56b94dd1dbd13235d27504e66baf23faba0",
+                "reference": "3839e56b94dd1dbd13235d27504e66baf23faba0",
                 "shasum": ""
             },
             "require": {
@@ -4824,7 +5891,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v7.0.4"
+                "source": "https://github.com/symfony/process/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -4840,20 +5907,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-22T20:27:20+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/routing",
-            "version": "v7.0.6",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "cded64e5bbf9f31786f1055fcc76718fdd77519c"
+                "reference": "9f82bf7766ccc9c22ab7aeb9bebb98351483fa5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/cded64e5bbf9f31786f1055fcc76718fdd77519c",
-                "reference": "cded64e5bbf9f31786f1055fcc76718fdd77519c",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/9f82bf7766ccc9c22ab7aeb9bebb98351483fa5b",
+                "reference": "9f82bf7766ccc9c22ab7aeb9bebb98351483fa5b",
                 "shasum": ""
             },
             "require": {
@@ -4905,7 +5972,7 @@
                 "url"
             ],
             "support": {
-                "source": "https://github.com/symfony/routing/tree/v7.0.6"
+                "source": "https://github.com/symfony/routing/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -4921,25 +5988,26 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-28T21:02:11+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v3.4.2",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "11bbf19a0fb7b36345861e85c5768844c552906e"
+                "reference": "bd1d9e59a81d8fa4acdcea3f617c581f7475a80f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/11bbf19a0fb7b36345861e85c5768844c552906e",
-                "reference": "11bbf19a0fb7b36345861e85c5768844c552906e",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/bd1d9e59a81d8fa4acdcea3f617c581f7475a80f",
+                "reference": "bd1d9e59a81d8fa4acdcea3f617c581f7475a80f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
-                "psr/container": "^1.1|^2.0"
+                "psr/container": "^1.1|^2.0",
+                "symfony/deprecation-contracts": "^2.5|^3"
             },
             "conflict": {
                 "ext-psr": "<1.1|>=2"
@@ -4947,7 +6015,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "3.4-dev"
+                    "dev-main": "3.5-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -4987,7 +6055,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/v3.4.2"
+                "source": "https://github.com/symfony/service-contracts/tree/v3.5.0"
             },
             "funding": [
                 {
@@ -5003,20 +6071,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-19T21:51:00+00:00"
+            "time": "2024-04-18T09:32:20+00:00"
         },
         {
             "name": "symfony/string",
-            "version": "v7.0.4",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "f5832521b998b0bec40bee688ad5de98d4cf111b"
+                "reference": "e405b5424dc2528e02e31ba26b83a79fd4eb8f63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/f5832521b998b0bec40bee688ad5de98d4cf111b",
-                "reference": "f5832521b998b0bec40bee688ad5de98d4cf111b",
+                "url": "https://api.github.com/repos/symfony/string/zipball/e405b5424dc2528e02e31ba26b83a79fd4eb8f63",
+                "reference": "e405b5424dc2528e02e31ba26b83a79fd4eb8f63",
                 "shasum": ""
             },
             "require": {
@@ -5073,7 +6141,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v7.0.4"
+                "source": "https://github.com/symfony/string/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -5089,20 +6157,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-01T13:17:36+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/translation",
-            "version": "v7.0.4",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "5b75e872f7d135d7abb4613809fadc8d9f3d30a0"
+                "reference": "1515e03afaa93e6419aba5d5c9d209159317100b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/5b75e872f7d135d7abb4613809fadc8d9f3d30a0",
-                "reference": "5b75e872f7d135d7abb4613809fadc8d9f3d30a0",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/1515e03afaa93e6419aba5d5c9d209159317100b",
+                "reference": "1515e03afaa93e6419aba5d5c9d209159317100b",
                 "shasum": ""
             },
             "require": {
@@ -5167,7 +6235,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v7.0.4"
+                "source": "https://github.com/symfony/translation/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -5183,20 +6251,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-22T20:27:20+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v3.4.2",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "43810bdb2ddb5400e5c5e778e27b210a0ca83b6b"
+                "reference": "b9d2189887bb6b2e0367a9fc7136c5239ab9b05a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/43810bdb2ddb5400e5c5e778e27b210a0ca83b6b",
-                "reference": "43810bdb2ddb5400e5c5e778e27b210a0ca83b6b",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/b9d2189887bb6b2e0367a9fc7136c5239ab9b05a",
+                "reference": "b9d2189887bb6b2e0367a9fc7136c5239ab9b05a",
                 "shasum": ""
             },
             "require": {
@@ -5205,7 +6273,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "3.4-dev"
+                    "dev-main": "3.5-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -5245,7 +6313,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/translation-contracts/tree/v3.4.2"
+                "source": "https://github.com/symfony/translation-contracts/tree/v3.5.0"
             },
             "funding": [
                 {
@@ -5261,20 +6329,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-23T14:51:35+00:00"
+            "time": "2024-04-18T09:32:20+00:00"
         },
         {
             "name": "symfony/uid",
-            "version": "v7.0.3",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/uid.git",
-                "reference": "87cedaf3fabd7b733859d4d77aa4ca598259054b"
+                "reference": "4f3a5d181999e25918586c8369de09e7814e7be2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/uid/zipball/87cedaf3fabd7b733859d4d77aa4ca598259054b",
-                "reference": "87cedaf3fabd7b733859d4d77aa4ca598259054b",
+                "url": "https://api.github.com/repos/symfony/uid/zipball/4f3a5d181999e25918586c8369de09e7814e7be2",
+                "reference": "4f3a5d181999e25918586c8369de09e7814e7be2",
                 "shasum": ""
             },
             "require": {
@@ -5319,7 +6387,7 @@
                 "uuid"
             ],
             "support": {
-                "source": "https://github.com/symfony/uid/tree/v7.0.3"
+                "source": "https://github.com/symfony/uid/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -5335,20 +6403,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-23T15:02:46+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v7.0.6",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "66d13dc207d5dab6b4f4c2b5460efe1bea29dbfb"
+                "reference": "d1627b66fd87c8b4d90cabe5671c29d575690924"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/66d13dc207d5dab6b4f4c2b5460efe1bea29dbfb",
-                "reference": "66d13dc207d5dab6b4f4c2b5460efe1bea29dbfb",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/d1627b66fd87c8b4d90cabe5671c29d575690924",
+                "reference": "d1627b66fd87c8b4d90cabe5671c29d575690924",
                 "shasum": ""
             },
             "require": {
@@ -5402,7 +6470,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v7.0.6"
+                "source": "https://github.com/symfony/var-dumper/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -5418,7 +6486,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-19T11:57:22+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

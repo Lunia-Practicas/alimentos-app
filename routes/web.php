@@ -15,8 +15,24 @@ use App\Http\Controllers\UpdateProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (! auth()->check()) {
+        return response('You are not logged in.');
+    }
+
+    $user = auth()->user();
+    $name = $user->name ?? 'User';
+    $email = $user->email ?? '';
+
+    return response("Hello {$name}! Your email address is {$email}.");
 });
+
+Route::get('/private', function () {
+    return response('Welcome! You are logged in.');
+})->middleware('auth');
+
+Route::get('/scope', function () {
+    return response('You have the `read:messages` permissions, and can therefore access this resource.');
+})->middleware('auth')->can('read:messages');
 
 
 Route::post('/categories', [CreateCategoryController::class, '__invoke'] );
