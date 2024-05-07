@@ -21,4 +21,3 @@ yarn-error.log
 /.idea
 /.vscode
 .auth0.*.json
-.auth0.*.json
