@@ -20,7 +20,8 @@ class Product extends Model
         'origin',
         'price',
         'vegan',
-        'gluten'
+        'gluten',
+        'user_created', 'user_updated'
     ];
 
     public function category()

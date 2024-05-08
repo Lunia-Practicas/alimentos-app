@@ -29,7 +29,7 @@ Route::get('/categories/products/{id}', [ListAllProductsByCategoryIdController::
 
 Route::post('/products', [CreateProductController::class, '__invoke'] )->middleware('auth');
 Route::get('/products', [ListAllProductsController::class, '__invoke'] )->middleware('auth');
-Route::post('/products', [SearchProductController::class, '__invoke'] )->middleware('auth');
+Route::post('/products/search', [SearchProductController::class, '__invoke'] )->middleware('auth');
 Route::get('/products/{id}', [GetProductByIdController::class, '__invoke'] )->middleware('auth');
 Route::patch('/products/{id}', [UpdateProductController::class, '__invoke'] )->middleware('auth');
 Route::delete('/products/{id}', [DeleteProductController::class, '__invoke'] )->middleware('auth');

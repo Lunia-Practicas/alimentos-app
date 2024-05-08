@@ -25,6 +25,9 @@ class CreateProductController extends Controller
             'gluten'=> 'required|boolean'
         ]);
 
+        $id = auth()->user()->getAuthIdentifier();
+        dump($id);
+
         $product = $this->createProductService->handle(new CreateProductRequest(
             $request->input('name'),
             $request->input('category_id'),
@@ -33,7 +36,7 @@ class CreateProductController extends Controller
             $request->input('price'),
             $request->input('vegan'),
             $request->input('gluten')
-        ));
+        ), $id);
 
         $product->fresh();
 

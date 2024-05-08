@@ -17,6 +17,8 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $user = fake()->uuid();
+
         return [
             'name' => fake()->name,
             'weight' => fake()->randomFloat(2, 0, 100),
@@ -24,7 +26,9 @@ class ProductFactory extends Factory
             'price' => fake()->randomFloat(2, 1, 1000),
             'vegan' => fake()->boolean,
             'gluten' => fake()->boolean,
-            'category_id' => Category::factory()->create()->id
+            'category_id' => Category::factory()->create()->id,
+            'user_created' => $user,
+            'user_updated' => $user,
         ];
     }
 }

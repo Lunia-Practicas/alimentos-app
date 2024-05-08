@@ -11,10 +11,12 @@ readonly class CreateCategoryService
     {
     }
 
-    public function handle(CreateCategoryRequest $request)
+    public function handle(CreateCategoryRequest $request, $id)
     {
         $data = [
             'name' => $request->name,
+            'user_created' => $id,
+            'user_updated' => $id,
         ];
 
         return $this->categoryRepository->create($data);

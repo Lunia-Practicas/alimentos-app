@@ -25,6 +25,8 @@ class UpdateProductController extends Controller
             'gluten'=> 'required|boolean'
         ]);
 
+        $id_updated = auth()->user()->getAuthIdentifier();
+
         $product = $this->updateProductService->handle(new UpdateProductRequest(
             $request->input('name'),
             $request->input('category_id'),
@@ -33,7 +35,7 @@ class UpdateProductController extends Controller
             $request->input('price'),
             $request->input('vegan'),
             $request->input('gluten')
-        ), $id);
+        ), $id, $id_updated);
 
         $product->refresh();
 

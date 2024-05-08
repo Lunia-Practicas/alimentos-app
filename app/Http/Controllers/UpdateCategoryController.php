@@ -19,9 +19,11 @@ class UpdateCategoryController extends Controller
             'name' => 'required|unique:categories',
         ]);
 
+        $id_updated = auth()->user()->getAuthIdentifier();
+
         $category = $this->updateCategoryService->handle(new UpdateCategoryRequest(
             $request->input('name'),
-        ), $id);
+        ), $id, $id_updated);
 
         $category->fresh();
 

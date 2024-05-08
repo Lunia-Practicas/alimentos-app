@@ -16,8 +16,12 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $user = fake()->uuid();
+
         return [
             'name' => fake()->unique()->word(),
+            'user_created' => $user,
+            'user_updated' => $user,
         ];
     }
 }

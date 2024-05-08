@@ -15,7 +15,7 @@ class UpdateProductService
 
     }
 
-    public function handle(UpdateProductRequest $request, $id)
+    public function handle(UpdateProductRequest $request, $id, $id_updated)
     {
         $data = [
             'name' => $request->name,
@@ -25,6 +25,7 @@ class UpdateProductService
             'price' => $request->price,
             'vegan' => $request->vegan,
             'gluten'=> $request->gluten,
+            'user_updated' => $id_updated
         ];
 
         DB::beginTransaction();

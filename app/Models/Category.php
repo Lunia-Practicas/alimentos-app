@@ -13,7 +13,7 @@ class Category extends Model
     protected $table = 'categories';
 
     protected $fillable = [
-        'name',
+        'name', 'user_created', 'user_updated'
     ];
 
     public function products()

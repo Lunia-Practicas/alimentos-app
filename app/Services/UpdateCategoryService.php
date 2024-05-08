@@ -14,10 +14,11 @@ readonly class UpdateCategoryService
     {
     }
 
-    public function handle(UpdateCategoryRequest $request, $id)
+    public function handle(UpdateCategoryRequest $request, $id, $id_updated)
     {
         $data = [
             'name' => $request->name,
+            'user_updated' => $id_updated,
         ];
 
         DB::beginTransaction();

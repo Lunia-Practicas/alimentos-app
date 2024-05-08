@@ -19,9 +19,12 @@ class CreateCategoryController extends Controller
            'name' => 'required|unique:categories',
        ]);
 
+       $id = auth()->user()->getAuthIdentifier();
+       //dump($id);
+
        $category = $this->createCategoryService->handle(new CreateCategoryRequest(
            $request->input('name'),
-       ));
+       ), $id);
 
        $category->fresh();
 

@@ -24,6 +24,8 @@ return new class extends Migration
             $table->double('price');
             $table->boolean('vegan');
             $table->boolean('gluten');
+            $table->string('user_created');
+            $table->string('user_updated');
             $table->timestamps();
         });
     }

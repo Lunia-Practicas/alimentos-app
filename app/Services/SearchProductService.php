@@ -39,6 +39,8 @@ class SearchProductService
                 'gluten'=> $product->gluten,
                 'id' => $product->id,
                 'category_name' => $category->name,
+                'user_created' => $product->user_created,
+                'user_updated' => $product->user_updated,
             ];
 
         }
