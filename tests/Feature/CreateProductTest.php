@@ -68,4 +68,15 @@ class CreateProductTest extends TestCase
         $this->assertTrue($exceptionThrown);
     }
 
+    #[Test] public function test_can_not_create_product_not_loggin()
+    {
+        $exceptionThrown = false;
+        try {
+            $this->controller->__invoke($this->request);
+        } catch (\Exception $exception) {
+            $exceptionThrown = true;
+        }
+
+        $this->assertTrue($exceptionThrown);
+    }
 }

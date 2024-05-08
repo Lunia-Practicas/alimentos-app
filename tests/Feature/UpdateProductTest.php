@@ -67,4 +67,16 @@ class UpdateProductTest extends TestCase
            'name' => 'test'
        ]);
    }
+
+   #[Test] public function test_can_not_update_product_not_loggin()
+   {
+       $exceptionThrown = false;
+       try {
+           $this->controller->__invoke($this->product->id, $this->request);
+       } catch (\Exception $exception) {
+           $exceptionThrown = true;
+       }
+
+       $this->assertTrue($exceptionThrown);
+   }
 }

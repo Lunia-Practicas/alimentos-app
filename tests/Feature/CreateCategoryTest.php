@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Http\Controllers\CreateCategoryController;
 use App\Models\User;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -54,4 +55,17 @@ class CreateCategoryTest extends TestCase
         $this->assertTrue($exceptionThrown);
 
     }
+
+    #[Test] public function test_can_not_create_category_not_loggin()
+    {
+        $exceptionThrown = false;
+        try {
+            $this->controller->__invoke($this->request);
+        } catch (\Exception $exception) {
+            $exceptionThrown = true;
+        }
+
+        $this->assertTrue($exceptionThrown);
+    }
+
 }

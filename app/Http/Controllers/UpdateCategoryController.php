@@ -19,6 +19,10 @@ class UpdateCategoryController extends Controller
             'name' => 'required|unique:categories',
         ]);
 
+        if (!auth()->check()) {
+            throw new \RuntimeException('Usuario no autenticado.', 401);
+        }
+
         $id_updated = auth()->user()->getAuthIdentifier();
 
         $category = $this->updateCategoryService->handle(new UpdateCategoryRequest(

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Services\CreateCategoryRequest;
 use App\Services\CreateCategoryService;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\Exception;
+use function PHPUnit\Framework\throwException;
 
 class CreateCategoryController extends Controller
 {
@@ -19,7 +21,12 @@ class CreateCategoryController extends Controller
            'name' => 'required|unique:categories',
        ]);
 
-       $id = auth()->user()->getAuthIdentifier();
+        if (!auth()->check()) {
+            throw new \RuntimeException('Usuario no autenticado.', 401);
+        }
+
+        $id = auth()->user()->getAuthIdentifier();
+
        //dump($id);
 
        $category = $this->createCategoryService->handle(new CreateCategoryRequest(

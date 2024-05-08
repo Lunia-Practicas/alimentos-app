@@ -25,6 +25,10 @@ class UpdateProductController extends Controller
             'gluten'=> 'required|boolean'
         ]);
 
+        if (!auth()->check()) {
+            throw new \RuntimeException('Usuario no autenticado.', 401);
+        }
+
         $id_updated = auth()->user()->getAuthIdentifier();
 
         $product = $this->updateProductService->handle(new UpdateProductRequest(

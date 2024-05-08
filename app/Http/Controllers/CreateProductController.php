@@ -25,6 +25,10 @@ class CreateProductController extends Controller
             'gluten'=> 'required|boolean'
         ]);
 
+        if (!auth()->check()) {
+            throw new \RuntimeException('Usuario no autenticado.', 401);
+        }
+
         $id = auth()->user()->getAuthIdentifier();
 
         $product = $this->createProductService->handle(new CreateProductRequest(

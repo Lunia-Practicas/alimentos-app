@@ -56,4 +56,20 @@ class UpdateCategoryTest extends TestCase
         ]);
 
     }
+
+    #[Test] public function test_can_not_update_not_loggin()
+    {
+
+        $category = Category::factory()->create(['name' => 'test']);
+        $category->refresh();
+
+        $exceptionThrown = false;
+        try {
+            $this->controller->__invoke($category->id, $this->request);
+        } catch (\Exception $exception) {
+            $exceptionThrown = true;
+        }
+
+        $this->assertTrue($exceptionThrown);
+    }
 }
