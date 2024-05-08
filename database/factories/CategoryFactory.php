@@ -21,7 +21,6 @@ class CategoryFactory extends Factory
         return [
             'name' => fake()->unique()->word(),
             'created_by' => $user,
-            'updated_by' => $user,
         ];
     }
 }

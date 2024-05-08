@@ -25,7 +25,7 @@ return new class extends Migration
             $table->boolean('vegan');
             $table->boolean('gluten');
             $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

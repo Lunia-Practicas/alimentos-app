@@ -28,7 +28,6 @@ class ProductFactory extends Factory
             'gluten' => fake()->boolean,
             'category_id' => Category::factory()->create()->id,
             'created_by' => $user,
-            'updated_by' => $user,
         ];
     }
 }

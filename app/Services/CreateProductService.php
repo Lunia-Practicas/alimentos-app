@@ -22,7 +22,6 @@ readonly class CreateProductService
             'gluten' => $request->gluten,
             'category_id' => $request->category_id,
             'created_by' => $id,
-            'updated_by' => $id,
         ];
 
         return $this->productRepository->create($data);

@@ -16,7 +16,6 @@ readonly class CreateCategoryService
         $data = [
             'name' => $request->name,
             'created_by' => $id,
-            'updated_by' => $id,
         ];
 
         return $this->categoryRepository->create($data);
