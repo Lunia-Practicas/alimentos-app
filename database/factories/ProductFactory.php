@@ -27,8 +27,8 @@ class ProductFactory extends Factory
             'vegan' => fake()->boolean,
             'gluten' => fake()->boolean,
             'category_id' => Category::factory()->create()->id,
-            'user_created' => $user,
-            'user_updated' => $user,
+            'created_by' => $user,
+            'updated_by' => $user,
         ];
     }
 }

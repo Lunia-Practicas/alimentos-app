@@ -21,7 +21,7 @@ class Product extends Model
         'price',
         'vegan',
         'gluten',
-        'user_created', 'user_updated'
+        'created_by', 'updated_by'
     ];
 
     public function category()

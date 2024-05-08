@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Http\Controllers\UpdateProductController;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Request;
@@ -44,6 +45,8 @@ class UpdateProductTest extends TestCase
 
    #[Test] public function test_update_product()
    {
+       $user = User::factory()->create();
+       $this->actingAs($user);
        $response = $this->controller->__invoke($this->product->id, $this->request);
        $responseArray = json_decode($response, true);
        $this->assertEquals('nuevo', $responseArray['name']);
@@ -51,8 +54,10 @@ class UpdateProductTest extends TestCase
 
    #[Test] public function test_update_product_db()
    {
+       $user = User::factory()->create();
+       $this->actingAs($user);
 
-    $this->controller->__invoke($this->product->id, $this->request);
+       $this->controller->__invoke($this->product->id, $this->request);
 
        $this->assertDatabaseHas('products', [
            'name' => 'nuevo'

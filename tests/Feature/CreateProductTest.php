@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Http\Controllers\CreateProductController;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -34,7 +35,8 @@ class CreateProductTest extends TestCase
 
     #[Test] public function test_create_product_db()
     {
-
+        $user = User::factory()->create();
+        $this->actingAs($user);
         $this->controller->__invoke($this->request);
 
         $this->assertDatabaseHas('products', [
@@ -45,6 +47,8 @@ class CreateProductTest extends TestCase
 
     public function test_can_not_create_product_not_exists_category()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
         $this->request = new Request([
             'name' => 'Test Product',
             'category_id' => 3,

@@ -26,7 +26,6 @@ class CreateProductController extends Controller
         ]);
 
         $id = auth()->user()->getAuthIdentifier();
-        dump($id);
 
         $product = $this->createProductService->handle(new CreateProductRequest(
             $request->input('name'),

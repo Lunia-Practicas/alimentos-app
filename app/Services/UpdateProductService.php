@@ -25,7 +25,7 @@ class UpdateProductService
             'price' => $request->price,
             'vegan' => $request->vegan,
             'gluten'=> $request->gluten,
-            'user_updated' => $id_updated
+            'updated_by' => $id_updated
         ];
 
         DB::beginTransaction();

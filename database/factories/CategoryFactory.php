@@ -20,8 +20,8 @@ class CategoryFactory extends Factory
 
         return [
             'name' => fake()->unique()->word(),
-            'user_created' => $user,
-            'user_updated' => $user,
+            'created_by' => $user,
+            'updated_by' => $user,
         ];
     }
 }

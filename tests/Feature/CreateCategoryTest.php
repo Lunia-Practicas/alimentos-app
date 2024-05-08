@@ -3,9 +3,11 @@
 namespace Tests\Feature;
 
 use App\Http\Controllers\CreateCategoryController;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Http;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -27,6 +29,8 @@ class CreateCategoryTest extends TestCase
 
     #[Test] public function test_create_category_db()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
         $this->controller->__invoke($this->request);
 
         $this->assertDatabaseHas('categories', [
@@ -36,6 +40,8 @@ class CreateCategoryTest extends TestCase
 
     #[Test] public function test_can_not_create_same_name_category()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
         $this->controller->__invoke($this->request);
 
         $exceptionThrown = false;

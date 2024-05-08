@@ -21,8 +21,8 @@ readonly class CreateProductService
             'vegan' => $request->vegan,
             'gluten' => $request->gluten,
             'category_id' => $request->category_id,
-            'user_created' => $id,
-            'user_updated' => $id,
+            'created_by' => $id,
+            'updated_by' => $id,
         ];
 
         return $this->productRepository->create($data);

@@ -18,7 +18,7 @@ readonly class UpdateCategoryService
     {
         $data = [
             'name' => $request->name,
-            'user_updated' => $id_updated,
+            'updated_by' => $id_updated,
         ];
 
         DB::beginTransaction();

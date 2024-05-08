@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Http\Controllers\UpdateCategoryController;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -27,6 +28,8 @@ class UpdateCategoryTest extends TestCase
 
     #[Test] public function test_update_category()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
         $category = Category::factory()->create(['name' => 'test']);
         $category->refresh();
 
@@ -37,6 +40,8 @@ class UpdateCategoryTest extends TestCase
 
     #[Test] public function test_update_category_db()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
         $category = Category::factory()->create(['name' => 'test']);
         $category->refresh();
 
