@@ -15,8 +15,10 @@ readonly class DeleteCategoryService
     {
     }
 
-    public function handle(DeleteCategoryRequest $request, $id): void
+    public function handle(DeleteCategoryRequest $param): void
     {
+        $id = $param->id;
+
         DB::beginTransaction();
 
         try {

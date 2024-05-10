@@ -14,8 +14,10 @@ readonly class UpdateCategoryService
     {
     }
 
-    public function handle(UpdateCategoryRequest $request, $id, $id_updated)
+    public function handle(UpdateCategoryRequest $request)
     {
+        $id = $request->id;
+        $id_updated = $request->id_updated;
         $data = [
             'name' => $request->name,
             'updated_by' => $id_updated,

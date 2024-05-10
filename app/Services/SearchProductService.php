@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
 
-class SearchProductService
+readonly class SearchProductService
 {
     public function __construct(private ProductRepository $productRepository, private CategoryRepository $categoryRepository)
     {

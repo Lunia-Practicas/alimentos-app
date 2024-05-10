@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class SearchProductRequest
+readonly class SearchProductRequest
 {
     public function __construct(public mixed $name,
                                 public mixed $origin,

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-readonly class GetCategoryByIdRequest
+readonly class GenerateDescriptionOpenAIRequest
 {
     public function __construct(public mixed $id)
     {

@@ -9,7 +9,8 @@
         "auth0/login": "^7.8",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "openai-php/laravel": "^0.8.1"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^2.0",

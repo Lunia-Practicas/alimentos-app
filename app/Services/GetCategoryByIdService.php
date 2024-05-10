@@ -11,8 +11,10 @@ readonly class GetCategoryByIdService
 
     }
 
-    public function handle(GetCategoryByIdRequest $param, $id)
+    public function handle(GetCategoryByIdRequest $param)
     {
+        $id = $param->id;
+
         return $this->categoryRepository->getCategoryById($id);
     }
 }

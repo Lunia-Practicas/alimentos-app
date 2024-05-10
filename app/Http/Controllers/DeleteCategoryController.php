@@ -16,7 +16,7 @@ class DeleteCategoryController extends Controller
 
     public function __invoke($id)
     {
-        $this->deleteCategoryService->handle(new DeleteCategoryRequest(), $id);
+        $this->deleteCategoryService->handle(new DeleteCategoryRequest($id));
 
         return Category::all()->toJson();
     }

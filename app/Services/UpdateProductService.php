@@ -7,7 +7,7 @@ use http\Exception\InvalidArgumentException;
 use Illuminate\Support\Facades\DB;
 use Mockery\Exception;
 
-class UpdateProductService
+readonly class UpdateProductService
 {
 
     public function __construct(private ProductRepository $productRepository)
@@ -15,8 +15,10 @@ class UpdateProductService
 
     }
 
-    public function handle(UpdateProductRequest $request, $id, $id_updated)
+    public function handle(UpdateProductRequest $request)
     {
+        $id = $request->id;
+        $id_updated = $request->id_updated;
         $data = [
             'name' => $request->name,
             'category_id' => $request->category_id,

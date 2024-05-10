@@ -4,7 +4,7 @@ namespace App\Services;
 
 readonly class CreateCategoryRequest
 {
-    public function __construct(public mixed $name)
+    public function __construct(public mixed $name, public mixed $id)
     {
     }
 }

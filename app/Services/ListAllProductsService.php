@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Repositories\ProductRepository;
 
-class ListAllProductsService
+readonly class ListAllProductsService
 {
 
     public function __construct(private ProductRepository $productRepository)

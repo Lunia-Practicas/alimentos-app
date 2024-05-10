@@ -2,7 +2,10 @@
 
 namespace App\Services;
 
-class ListAllProductsByCategoryIdRequest
+readonly class ListAllProductsByCategoryIdRequest
 {
+    public function __construct(public mixed $id)
+    {
 
+    }
 }

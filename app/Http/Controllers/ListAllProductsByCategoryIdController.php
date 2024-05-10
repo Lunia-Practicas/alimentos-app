@@ -15,7 +15,7 @@ class ListAllProductsByCategoryIdController extends Controller
 
     public function __invoke($id)
     {
-        $products = $this->listAllProductsByCategoryIdService->handle(new ListAllProductsByCategoryIdRequest(), $id);
+        $products = $this->listAllProductsByCategoryIdService->handle(new ListAllProductsByCategoryIdRequest($id));
 
         return $products->toJson();
     }

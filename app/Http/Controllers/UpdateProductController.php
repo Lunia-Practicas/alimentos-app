@@ -38,8 +38,9 @@ class UpdateProductController extends Controller
             $request->input('origin'),
             $request->input('price'),
             $request->input('vegan'),
-            $request->input('gluten')
-        ), $id, $id_updated);
+            $request->input('gluten'),
+            $id, $id_updated
+        ));
 
         $product->refresh();
 

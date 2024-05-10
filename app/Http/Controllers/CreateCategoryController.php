@@ -30,8 +30,8 @@ class CreateCategoryController extends Controller
        //dump($id);
 
        $category = $this->createCategoryService->handle(new CreateCategoryRequest(
-           $request->input('name'),
-       ), $id);
+           $request->input('name'),$id
+       ));
 
        $category->fresh();
 

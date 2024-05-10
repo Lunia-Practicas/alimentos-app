@@ -26,8 +26,8 @@ class UpdateCategoryController extends Controller
         $id_updated = auth()->user()->getAuthIdentifier();
 
         $category = $this->updateCategoryService->handle(new UpdateCategoryRequest(
-            $request->input('name'),
-        ), $id, $id_updated);
+            $request->input('name'), $id, $id_updated
+        ));
 
         $category->fresh();
 

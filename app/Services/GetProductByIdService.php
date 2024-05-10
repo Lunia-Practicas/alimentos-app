@@ -11,8 +11,9 @@ readonly class GetProductByIdService
 
     }
 
-    public function handle($param, $id)
+    public function handle(GetProductByIdRequest $param)
     {
+        $id = $param->id;
         return $this->productRepository->getProductById($id);
     }
 }

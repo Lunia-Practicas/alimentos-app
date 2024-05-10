@@ -11,8 +11,9 @@ class ListAllProductsByCategoryIdService
 
     }
 
-    public function handle($param, $id)
+    public function handle(ListAllProductsByCategoryIdRequest $param)
     {
+        $id = $param->id;
         return $this->productRepository->listAllByCategoryId($id);
     }
 }

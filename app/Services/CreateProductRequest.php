@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class CreateProductRequest
+readonly class CreateProductRequest
 {
 
     public function __construct(public mixed $name,

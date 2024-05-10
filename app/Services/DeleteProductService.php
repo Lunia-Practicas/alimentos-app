@@ -15,8 +15,10 @@ readonly class DeleteProductService
     {
     }
 
-    public function handle(DeleteProductRequest $param, $id): void
+    public function handle(DeleteProductRequest $param): void
     {
+        $id = $param->id;
+
         DB::beginTransaction();
 
         try {
