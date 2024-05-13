@@ -26,7 +26,7 @@ class DescriptionRepository
             ->make();
 
         $response = $client->completions()->create([
-            'prompt' => 'Actúa como un redactor publicitario en tiendas online trabajando para un eCommerce que venda productos alimenticios. Dame la descripción para la ficha del siguiente producto sin tener en cuenta la fecha de creación y actualización: '.$product. '. Necesito que sea descriptivo y tenga una extensión de 300 palabras con un tono persuasivo',
+            'prompt' => 'Actúa como un redactor publicitario en tiendas online trabajando para un eCommerce que venda productos alimenticios. Dame la descripción para la ficha del siguiente producto usando el name, weight, origin, price, vegan y gluten: '.$product. '. Necesito que sea descriptivo y tenga una extensión de 200 palabras con un tono persuasivo',
             'max_tokens' => 700,
             'temperature' => 0.7
         ]);

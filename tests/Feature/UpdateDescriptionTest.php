@@ -108,12 +108,12 @@ class UpdateDescriptionTest extends TestCase
 
         $this->controllerD->__invoke($request3);
 
-        $this->assertDatabaseHas('descriptions', [
+        $this->assertDatabaseHas('product_content', [
             'title' => 'new_title',
             'description' => 'new_description',
         ]);
 
-        $this->assertDatabaseMissing('descriptions', [
+        $this->assertDatabaseMissing('product_content', [
             'title' => implode(",", $title),
             'description' => implode(",", $description),
         ]);

@@ -80,7 +80,7 @@ class SaveDescriptionOpenAITest extends TestCase
 
         $this->controllerC->__invoke($request2);
 
-        $this->assertDatabaseHas('descriptions', [
+        $this->assertDatabaseHas('product_content', [
             'title' => implode(",", $title),
             'description' => implode(",", $description),
         ]);
