@@ -6,7 +6,8 @@ use App\Http\Controllers\DeleteCategoryController;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -29,7 +30,19 @@ class DeleteCategoryTest extends TestCase
         $category1->refresh();
         $category2->refresh();
 
-        $categories = $this->controller->__invoke($category1->id);
+        $request = new Request([],[],[],[],[],[
+            'REQUEST_URI' => 'api/categories/' . $category1->id,
+        ]);
+
+        $request->setRouteResolver(function () use ($request, $category1) {
+            return (new Route(
+                'DELETE',
+                'api/categories/{id}',
+                []
+            ))->bind($request);
+        });
+
+        $categories = $this->controller->__invoke($request);
 
         $categoriesData = json_decode($categories, true);
 
@@ -47,7 +60,19 @@ class DeleteCategoryTest extends TestCase
         $category1->refresh();
         $category2->refresh();
 
-        $this->controller->__invoke($category1->id);
+        $request = new Request([],[],[],[],[],[
+            'REQUEST_URI' => 'api/categories/' . $category1->id,
+        ]);
+
+        $request->setRouteResolver(function () use ($request, $category1) {
+            return (new Route(
+                'DELETE',
+                'api/categories/{id}',
+                []
+            ))->bind($request);
+        });
+
+        $this->controller->__invoke($request);
 
         $this->assertDatabaseMissing('categories', [
             'id' => $category1->id
@@ -62,11 +87,23 @@ class DeleteCategoryTest extends TestCase
         $category1->refresh();
         $category2->refresh();
 
-        $this->controller->__invoke($category1->id);
+        $request = new Request([],[],[],[],[],[
+            'REQUEST_URI' => 'api/categories/' . $category1->id,
+        ]);
+
+        $request->setRouteResolver(function () use ($request, $category1) {
+            return (new Route(
+                'DELETE',
+                'api/categories/{id}',
+                []
+            ))->bind($request);
+        });
+
+        $this->controller->__invoke($request);
 
         $exceptionThrown = false;
         try {
-            $this->controller->__invoke('sdsds');
+            $this->controller->__invoke($request);
         } catch (\Exception $e) {
             $exceptionThrown = true;
         }
@@ -88,7 +125,19 @@ class DeleteCategoryTest extends TestCase
 
         $exceptionThrown = false;
         try {
-            $this->controller->__invoke($category1->id);
+            $request = new Request([],[],[],[],[],[
+                'REQUEST_URI' => 'api/categories/' . $category1->id,
+            ]);
+
+            $request->setRouteResolver(function () use ($request, $category1) {
+                return (new Route(
+                    'DELETE',
+                    'api/categories/{id}',
+                    []
+                ))->bind($request);
+            });
+
+            $this->controller->__invoke($request);
         } catch (\Exception $e) {
             $exceptionThrown = true;
         }

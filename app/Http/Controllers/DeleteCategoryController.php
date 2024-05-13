@@ -14,9 +14,11 @@ class DeleteCategoryController extends Controller
 
     }
 
-    public function __invoke($id)
+    public function __invoke(Request $request)
     {
-        $this->deleteCategoryService->handle(new DeleteCategoryRequest($id));
+        $this->deleteCategoryService->handle(new DeleteCategoryRequest(
+            $request->route('id'),
+        ));
 
         return Category::all()->toJson();
     }

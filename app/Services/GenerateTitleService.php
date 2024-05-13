@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Repositories\DescriptionRepository;
 
-readonly class GenerateDescriptionOpenAIService
+readonly class GenerateTitleService
 {
 
     public function __construct(private DescriptionRepository $descriptionRepository)
@@ -12,12 +12,12 @@ readonly class GenerateDescriptionOpenAIService
 
     }
 
-    public function handle(GenerateDescriptionOpenAIRequest $param): array
+    public function handle(GenerateTitleRequest $param): array
     {
         $id = $param->id;
 
         return [
-            'description' => $this->descriptionRepository->generate($id)
+            'title' => $this->descriptionRepository->generateTitle($id)
         ];
     }
 }

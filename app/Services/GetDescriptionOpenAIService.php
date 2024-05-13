@@ -19,7 +19,8 @@ readonly class GetDescriptionOpenAIService
 
         if (is_null($productDescription)) {
             return [
-                'description' => null
+                'description' => null,
+                'title' => null,
             ];
         }
 

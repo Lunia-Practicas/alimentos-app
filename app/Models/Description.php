@@ -14,7 +14,8 @@ class Description extends Model
 
     protected $fillable = [
         'description',
-        'product_id'
+        'product_id',
+        'title'
     ];
 
     public function description()

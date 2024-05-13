@@ -17,7 +17,9 @@ class SaveDescriptionOpenAIController extends Controller
     public function __invoke(Request $request)
     {
         return $this->saveDescriptionOpenAIService->handle(new SaveDescriptionOpenAIRequest(
-            $request->route('id'), $request->input('description')
+            $request->route('id'),
+            $request->input('description'),
+            $request->input('title')
             )
         );
     }

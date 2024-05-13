@@ -14,9 +14,11 @@ class GetCategoryByIdController extends Controller
 
     }
 
-    public function __invoke($id)
+    public function __invoke(Request $request)
     {
-        $category = $this->getCategoryByIdService->handle(new GetCategoryByIdRequest($id));
+        $category = $this->getCategoryByIdService->handle(new GetCategoryByIdRequest(
+            $request->route('id')
+        ));
 
         return $category->toJson();
     }

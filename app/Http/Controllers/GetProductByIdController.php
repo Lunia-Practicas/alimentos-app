@@ -13,9 +13,11 @@ class GetProductByIdController extends Controller
 
     }
 
-    public function __invoke($id)
+    public function __invoke(Request $request)
     {
-        $product = $this->getProductByIdService->handle(new GetProductByIdRequest($id));
+        $product = $this->getProductByIdService->handle(new GetProductByIdRequest(
+            $request->route('id')
+        ));
 
         return $product->toJson();
     }

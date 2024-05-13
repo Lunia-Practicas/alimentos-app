@@ -13,7 +13,7 @@ class UpdateCategoryController extends Controller
 
     }
 
-    public function __invoke($id, Request $request)
+    public function __invoke(Request $request)
     {
         $request->validate([
             'name' => 'required|unique:categories',
@@ -26,7 +26,7 @@ class UpdateCategoryController extends Controller
         $id_updated = auth()->user()->getAuthIdentifier();
 
         $category = $this->updateCategoryService->handle(new UpdateCategoryRequest(
-            $request->input('name'), $id, $id_updated
+            $request->input('name'), $request->route('id'), $id_updated
         ));
 
         $category->fresh();

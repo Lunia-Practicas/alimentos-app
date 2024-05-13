@@ -6,6 +6,8 @@ use App\Http\Controllers\GetCategoryByIdController;
 use App\Models\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Tests\TestCase;
 
 class GetCategoryByIdTest extends TestCase
@@ -25,7 +27,19 @@ class GetCategoryByIdTest extends TestCase
         $categoryA = Category::factory()->create();
         $categoryB = Category::factory()->create();
 
-        $category = $this->controller->__invoke($categoryA->id);
+        $request = new Request([],[],[],[],[],[
+            'REQUEST_URI' => 'api/categories/' . $categoryA->id,
+        ]);
+
+        $request->setRouteResolver(function () use ($request, $categoryA) {
+            return (new Route(
+                'GET',
+                'api/categories/{id}',
+                []
+            ))->bind($request);
+        });
+
+        $category = $this->controller->__invoke($request);
         $categoriesData = json_decode($category, true);
 
         $this->assertEquals($categoryA->id, $categoriesData['id']);

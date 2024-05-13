@@ -16,10 +16,10 @@ readonly class UpdateDescriptionOpenAIService
     public function handle(UpdateDescriptionOpenAIRequest $param)
     {
         $id = $param->id;
-        $description = $param->description;
 
         $data = [
-            'description' => $description,
+            'description' => $param->description,
+            'title' => $param->title,
         ];
 
         DB::beginTransaction();

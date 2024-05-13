@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -31,7 +33,19 @@ class DeleteProductTest extends TestCase
         $product1->refresh();
         $product2->refresh();
 
-        $products = $this->controller->__invoke($product1->id);
+        $request = new Request([],[],[],[],[],[
+            'REQUEST_URI' => 'api/products/' . $category1->id,
+        ]);
+
+        $request->setRouteResolver(function () use ($request, $category1) {
+            return (new Route(
+                'DELETE',
+                'api/products/{id}',
+                []
+            ))->bind($request);
+        });
+
+        $products = $this->controller->__invoke($request);
 
         $productsData = json_decode($products, true);
 
@@ -50,7 +64,19 @@ class DeleteProductTest extends TestCase
         $product1->refresh();
         $product2->refresh();
 
-        $this->controller->__invoke($product1->id);
+        $request = new Request([],[],[],[],[],[
+            'REQUEST_URI' => 'api/products/' . $category1->id,
+        ]);
+
+        $request->setRouteResolver(function () use ($request, $category1) {
+            return (new Route(
+                'DELETE',
+                'api/products/{id}',
+                []
+            ))->bind($request);
+        });
+
+        $this->controller->__invoke($request);
 
         $this->assertDatabaseMissing('products', [
             'id' => $product1->id

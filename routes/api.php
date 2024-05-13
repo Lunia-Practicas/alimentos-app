@@ -5,6 +5,7 @@ use App\Http\Controllers\CreateProductController;
 use App\Http\Controllers\DeleteCategoryController;
 use App\Http\Controllers\DeleteProductController;
 use App\Http\Controllers\GenerateDescriptionOpenAIController;
+use App\Http\Controllers\GenerateTitleController;
 use App\Http\Controllers\GetCategoryByIdController;
 use App\Http\Controllers\GetDescriptionOpenAIController;
 use App\Http\Controllers\GetProductByIdController;
@@ -39,6 +40,7 @@ Route::patch('/products/{id}', [UpdateProductController::class, '__invoke'] )->m
 Route::delete('/products/{id}', [DeleteProductController::class, '__invoke'] )->middleware('auth');
 
 Route::get('/products/description/{id}',[GenerateDescriptionOpenAIController::class, '__invoke'])->middleware('auth');
+Route::get('/products/description-title/{id}',[GenerateTitleController::class, '__invoke'])->middleware('auth');
 Route::post('/products/description/{id}',[SaveDescriptionOpenAIController::class, '__invoke'])->middleware('auth');
 Route::patch('/products/description/{id}', [UpdateDescriptionOpenAIController::class, '__invoke'])->middleware('auth');
 Route::get('/products/description/info/{id}', [GetDescriptionOpenAIController::class, '__invoke'])->middleware('auth');

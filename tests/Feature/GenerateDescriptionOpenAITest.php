@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -27,12 +29,24 @@ class GenerateDescriptionOpenAITest extends TestCase
     #[Test] public function test_get_from_openai()
     {
         $productA = Product::factory()->create(['category_id' => $this->category->id]);
-        $productB = Product::factory()->create(['category_id' => $this->category->id]);
-        //dump($productA->toJson());
+        Product::factory()->create(['category_id' => $this->category->id]);
 
-        $response = $this->controller->__invoke($productA->id);
+        $request = new Request([],[],[],[],[],[
+            'REQUEST_URI' => 'api/description/' . $productA->id,
+        ]);
 
-        dump($response);
+        $request->setRouteResolver(function () use ($request, $productA) {
+            return (new Route(
+                'GET',
+                'api/description/{id}',
+                []
+            ))->bind($request);
+        });
+
+        $response = $this->controller->__invoke($request);
+
+        $this->assertArrayHasKey('description', $response);
+        $this->assertNotNull( $response['description']);
 
     }
 }

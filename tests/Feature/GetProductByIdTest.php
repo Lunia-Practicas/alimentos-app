@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -29,7 +31,19 @@ class GetProductByIdTest extends TestCase
         $productA = Product::factory()->create(['category_id' => $this->category->id]);
         $productB = Product::factory()->create(['category_id' => $this->category->id]);
 
-        $response = $this->controller->__invoke($productA->id);
+        $request = new Request([],[],[],[],[],[
+            'REQUEST_URI' => 'api/products/' . $productA->id,
+        ]);
+
+        $request->setRouteResolver(function () use ($request, $productA) {
+            return (new Route(
+                'GET',
+                'api/products/{id}',
+                []
+            ))->bind($request);
+        });
+
+        $response = $this->controller->__invoke($request);
         $responseData = json_decode($response, true);
 
         $this->assertEquals($productA->id, $responseData['id']);

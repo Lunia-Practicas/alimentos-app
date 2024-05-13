@@ -16,7 +16,9 @@ class UpdateDescriptionOpenAIController extends Controller
     public function __invoke(Request $request)
     {
         return $this->updateDescriptionOpenAIService->handle(new UpdateDescriptionOpenAIRequest(
-            $request->route('id'), $request->input('description')
+            $request->route('id'),
+            $request->input('description'),
+            $request->input('title')
         ));
     }
 }

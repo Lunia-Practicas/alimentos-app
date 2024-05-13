@@ -16,6 +16,7 @@ class SaveDescriptionOpenAIService
         $data = [
             'product_id' => $param->id,
             'description' => $param->description,
+            'title' => $param->title,
         ];
 
         return $this->descriptionRepository->create($data);

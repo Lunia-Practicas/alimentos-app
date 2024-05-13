@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Services\GenerateDescriptionOpenAIRequest;
 use App\Services\GenerateDescriptionOpenAIService;
 use Illuminate\Http\Request;
-use OpenAI\Responses\Completions\CreateResponse;
 
 class GenerateDescriptionOpenAIController extends Controller
 {
@@ -14,8 +13,10 @@ class GenerateDescriptionOpenAIController extends Controller
 
     }
 
-    public function __invoke($id): array
+    public function __invoke(Request $request): array
     {
-        return $this->openAIService->handle(new GenerateDescriptionOpenAIRequest($id));
+        return $this->openAIService->handle(new GenerateDescriptionOpenAIRequest(
+            $request->route('id'),
+        ));
     }
 }

@@ -5,7 +5,7 @@ namespace App\Services;
 class SaveDescriptionOpenAIRequest
 {
 
-    public function __construct(public mixed $id, public mixed $description)
+    public function __construct(public mixed $id, public mixed $description, public mixed $title)
     {
 
     }

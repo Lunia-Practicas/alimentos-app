@@ -5,20 +5,24 @@ namespace Tests\Feature;
 use App\Http\Controllers\GenerateDescriptionOpenAIController;
 use App\Http\Controllers\GenerateTitleController;
 use App\Http\Controllers\SaveDescriptionOpenAIController;
+use App\Http\Controllers\UpdateDescriptionOpenAIController;
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Services\UpdateDescriptionOpenAIService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class SaveDescriptionOpenAITest extends TestCase
+class UpdateDescriptionTest extends TestCase
 {
     use RefreshDatabase;
     private GenerateTitleController $controllerA;
     private GenerateDescriptionOpenAIController $controllerB;
     private SaveDescriptionOpenAIController $controllerC;
+    private UpdateDescriptionOpenAIController $controllerD;
 
     private Category $category;
 
@@ -28,11 +32,12 @@ class SaveDescriptionOpenAITest extends TestCase
         $this->controllerA = $this->app->make(GenerateTitleController::class);
         $this->controllerB = $this->app->make(GenerateDescriptionOpenAIController::class);
         $this->controllerC = $this->app->make(SaveDescriptionOpenAIController::class);
+        $this->controllerD = $this->app->make(UpdateDescriptionOpenAIController::class);
         $this->category = Category::factory()->create();
         $this->category->fresh();
     }
 
-    #[Test] public function test_create_description_openAI()
+    #[Test] public function test_update_description()
     {
         $product = Product::factory()->create(['category_id' => $this->category->id]);
 
@@ -81,6 +86,34 @@ class SaveDescriptionOpenAITest extends TestCase
         $this->controllerC->__invoke($request2);
 
         $this->assertDatabaseHas('descriptions', [
+            'title' => implode(",", $title),
+            'description' => implode(",", $description),
+        ]);
+
+
+        $request3 = new Request([
+            'title' => 'new_title',
+            'description' => 'new_description',
+        ],[],[],[],[],[
+            'REQUEST_URI' => 'api/description/' . $product->id,
+        ]);
+
+        $request3->setRouteResolver(function () use ($request3, $product) {
+            return (new Route(
+                'PATCH',
+                'api/description/{id}',
+                []
+            ))->bind($request3);
+        });
+
+        $this->controllerD->__invoke($request3);
+
+        $this->assertDatabaseHas('descriptions', [
+            'title' => 'new_title',
+            'description' => 'new_description',
+        ]);
+
+        $this->assertDatabaseMissing('descriptions', [
             'title' => implode(",", $title),
             'description' => implode(",", $description),
         ]);
