@@ -30,8 +30,8 @@ class GetImagesByProductIdTest extends TestCase
     {
         $product = Product::factory()->create(['category_id' => $this->category->id]);
 
-        $imageA = Image::factory()->create(['product_id' => $product->id]);
-        $imageB = Image::factory()->create(['product_id' => $product->id]);
+        Image::factory()->create(['product_id' => $product->id]);
+        Image::factory()->create(['product_id' => $product->id]);
 
         $request = new Request([],[],[],[],[],[
             'REQUEST_URI' => 'api/products/images/' . $product->id,
@@ -46,6 +46,8 @@ class GetImagesByProductIdTest extends TestCase
         });
 
         $response = $this->controller->__invoke($request);
-        dump($response);
+
+        $data = json_decode($response, true);
+        $this->assertCount(2, $data);
     }
 }

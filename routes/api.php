@@ -50,4 +50,4 @@ Route::get('/products/description/info/{id}', [GetDescriptionOpenAIController::c
 
 Route::get('/products/image/{id}', [GenerateImageController::class, '__invoke'])->middleware('auth');
 Route::post('/products/image/{id}', [SaveImageController::class, '__invoke'])->middleware('auth');
-Route::get('/products/images/{id}', [GetImagesByProductIdController::class])->middleware('auth');
+Route::get('/products/images/{id}', [GetImagesByProductIdController::class, '__invoke'])->middleware('auth');

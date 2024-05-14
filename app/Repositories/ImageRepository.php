@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Image;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 use OpenAI;
 
 class ImageRepository
@@ -31,9 +32,25 @@ class ImageRepository
 
     public function create($data)
     {
-        $image = Image::create($data);
+        //$image = Image::create($data);
 
-        $image->fresh();
+        $url = $data['image'];
+
+        if (!app()->environment('testing')) {
+
+            $contenido = file_get_contents($url);
+            $nombreArchivo = $data['product_id'].'.jpg';
+
+            Storage::disk('public')->put($nombreArchivo, $contenido);
+
+            $image = Image::create([
+                'product_id' => $data['product_id'],
+                'image' => $nombreArchivo,
+            ]);
+            $image->fresh();
+        }else{
+            $image = Image::create($data);
+        }
         return $image;
     }
 

@@ -34,6 +34,7 @@ class SaveDescriptionOpenAITest extends TestCase
 
     #[Test] public function test_create_description_openAI()
     {
+        //Title
         $product = Product::factory()->create(['category_id' => $this->category->id]);
 
         $request = new Request([],[],[],[],[],[
@@ -49,6 +50,7 @@ class SaveDescriptionOpenAITest extends TestCase
 
         $title = $this->controllerA->__invoke($request);
 
+        //Description
         $request1 = new Request([],[],[],[],[],[
             'REQUEST_URI' => 'api/description/' . $product->id,
         ]);
@@ -63,6 +65,7 @@ class SaveDescriptionOpenAITest extends TestCase
 
         $description = $this->controllerB->__invoke($request1);
 
+        //Save
         $request2 = new Request([
             'title' => implode(",", $title),
             'description' => implode(",", $description),
