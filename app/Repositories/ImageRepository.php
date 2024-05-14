@@ -10,7 +10,7 @@ use OpenAI;
 class ImageRepository
 {
 
-    public function generateImage($id)
+    public function generateImage($id, $prompt)
     {
         $product = Product::findOrFail($id);
 
@@ -22,7 +22,7 @@ class ImageRepository
 
         $response = $client->images()->create([
             'model' => 'dall-e-3',
-            'prompt' => 'Dame la imagen de un producto usando el dato name de este objeto: '.$product['name'],
+            'prompt' => $prompt.$product['name'],
             'n' => 1,
             'size' => '1024x1024',
         ]);
@@ -32,26 +32,57 @@ class ImageRepository
 
     public function create($data)
     {
-        //$image = Image::create($data);
 
-        $url = $data['image'];
+        $urlCerca = $data['imageCerca'];
+        $urlLejos = $data['imageLejos'];
 
         if (!app()->environment('testing')) {
 
-            $contenido = file_get_contents($url);
-            $nombreArchivo = $data['product_id'].'.jpg';
+            //Cerca
+            $contenidoCerca = file_get_contents($urlCerca);
+            $nombreArchivoCerca = $data['product_id'].'Cerca.jpg';
 
-            Storage::disk('public')->put($nombreArchivo, $contenido);
+            Storage::disk('public')->put($nombreArchivoCerca, $contenidoCerca);
 
-            $image = Image::create([
+            $imageCerca = Image::create([
                 'product_id' => $data['product_id'],
-                'image' => $nombreArchivo,
+                'image' => $nombreArchivoCerca,
             ]);
-            $image->fresh();
+            $imageCerca->fresh();
+
+            //Lejos
+            $contenidoLejos = file_get_contents($urlLejos);
+            $nombreArchivoLejos = $data['product_id'].'Lejos.jpg';
+
+            Storage::disk('public')->put($nombreArchivoLejos, $contenidoLejos);
+
+            $imageLejos = Image::create([
+                'product_id' => $data['product_id'],
+                'image' => $nombreArchivoLejos,
+            ]);
+            $imageLejos->fresh();
+
+            return [
+                'imageCerca' => $imageCerca,
+                'imageLejos' => $imageLejos
+            ];
+
+
         }else{
-            $image = Image::create($data);
+            $imageCerca = Image::create([
+                'product_id' => $data['product_id'],
+                'image' => $data['imageCerca']
+            ]);
+            $imageLejos = Image::create([
+                'product_id' => $data['product_id'],
+                'image' => $data['imageLejos']
+            ]);
+
+            return [
+                'imageCerca' => $imageCerca,
+                'imageLejos' => $imageLejos
+            ];
         }
-        return $image;
     }
 
     public function getImagesByIdProduct($id)

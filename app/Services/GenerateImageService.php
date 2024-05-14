@@ -11,13 +11,13 @@ readonly class GenerateImageService
 
     }
 
-    public function handle(GenerateImageRequest $param): array
+    public function handle(GenerateImageRequest $param, string $prompt)
     {
         $id = $param->id;
 
-        return [
-            'image' => $this->imageRepository->generateImage($id)
-        ];
+
+        return $this->imageRepository->generateImage($id, $prompt);
+
 
     }
 }

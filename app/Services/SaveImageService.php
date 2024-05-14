@@ -11,11 +11,12 @@ readonly class SaveImageService
 
     }
 
-    public function handle(SaveImageRequest $param)
+    public function handle(SaveImageRequest $param): array
     {
         $data = [
             'product_id' => $param->id,
-            'image' => $param->image,
+            'imageCerca' => $param->imageCerca,
+            'imageLejos' => $param->imageLejos
         ];
 
         return $this->imageRepository->create($data);

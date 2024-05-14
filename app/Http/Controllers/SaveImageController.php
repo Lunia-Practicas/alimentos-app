@@ -13,11 +13,14 @@ class SaveImageController extends Controller
 
     }
 
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): array
     {
         return $this->saveImageService->handle(new SaveImageRequest(
             $request->route('id'),
-            $request->input('image')
+            $request->input('imageCerca'),
+            $request->input('imageLejos')
         ));
+
+        // return ['imageCerca' => $imageCerca, 'imageLejos' => $imageLejos]
     }
 }

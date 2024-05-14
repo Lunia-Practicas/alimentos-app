@@ -6,7 +6,6 @@ use App\Http\Controllers\GenerateImageController;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use PHPUnit\Framework\Attributes\Test;
@@ -43,7 +42,9 @@ class GenerateImageTest extends TestCase
 
         $response = $this->controller->__invoke($request);
 
-        $this->assertArrayHasKey('image', $response);
-        $this->assertNotNull($response['image']);
+        $this->assertArrayHasKey('imageCerca', $response);
+        $this->assertArrayHasKey('imageLejos', $response);
+        $this->assertNotNull($response['imageLejos']);
+        $this->assertNotNull($response['imageCerca']);
     }
 }

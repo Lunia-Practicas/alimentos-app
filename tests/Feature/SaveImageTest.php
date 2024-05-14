@@ -46,10 +46,11 @@ class SaveImageTest extends TestCase
             ))->bind($request);
         });
 
-        $imageUrl = $this->controllerA->__invoke($request);
+        $images = $this->controllerA->__invoke($request);
 
         $request2 = new Request([
-            'image' => implode(",", $imageUrl),
+            'imageCerca' => $images['imageCerca'],
+            'imageLejos' => $images['imageLejos']
         ],[],[],[],[],[
             'REQUEST_URI' => 'api/products/image/' . $product->id,
         ]);
@@ -65,7 +66,12 @@ class SaveImageTest extends TestCase
         $this->controllerB->__invoke($request2);
 
         $this->assertDatabaseHas('images', [
-            'image' => implode(",", $imageUrl),
+            'image' => $images['imageCerca'],
+            'product_id' => $product->id,
+        ]);
+
+        $this->assertDatabaseHas('images', [
+            'image' => $images['imageLejos'],
             'product_id' => $product->id,
         ]);
 
