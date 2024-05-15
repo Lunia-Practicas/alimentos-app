@@ -26,7 +26,7 @@ class GenerateImageTest extends TestCase
 
     #[Test] public function test_generate_image()
     {
-        $product = Product::factory()->create(['category_id' => $this->category->id]);;
+        $product = Product::factory()->create(['category_id' => $this->category->id]);
 
         $request = new Request([],[],[],[],[],[
             'REQUEST_URI' => 'api/products/image/' . $product->id,

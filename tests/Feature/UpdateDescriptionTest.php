@@ -26,7 +26,7 @@ class UpdateDescriptionTest extends TestCase
 
     private Category $category;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->controllerA = $this->app->make(GenerateTitleController::class);

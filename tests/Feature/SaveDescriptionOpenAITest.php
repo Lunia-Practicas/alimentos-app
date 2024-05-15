@@ -50,7 +50,7 @@ class SaveDescriptionOpenAITest extends TestCase
 
         $title = $this->controllerA->__invoke($request);
 
-        //Description
+        //ProductContent
         $request1 = new Request([],[],[],[],[],[
             'REQUEST_URI' => 'api/description/' . $product->id,
         ]);

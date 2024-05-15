@@ -4,8 +4,10 @@ use App\Http\Controllers\CreateCategoryController;
 use App\Http\Controllers\CreateProductController;
 use App\Http\Controllers\DeleteCategoryController;
 use App\Http\Controllers\DeleteProductController;
+use App\Http\Controllers\GenerateCategoryDescriptionController;
 use App\Http\Controllers\GenerateDescriptionOpenAIController;
 use App\Http\Controllers\GenerateImageController;
+use App\Http\Controllers\GenerateImageDescriptionController;
 use App\Http\Controllers\GenerateTitleController;
 use App\Http\Controllers\GetCategoryByIdController;
 use App\Http\Controllers\GetDescriptionOpenAIController;
@@ -19,6 +21,7 @@ use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\SearchProductController;
 use App\Http\Controllers\UpdateCategoryController;
 use App\Http\Controllers\UpdateDescriptionOpenAIController;
+use App\Http\Controllers\UpdateImageByIdController;
 use App\Http\Controllers\UpdateProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +35,7 @@ Route::get('/categories', [ListAllCategoriesController::class, '__invoke'] )->mi
 Route::get('/categories/{id}', [GetCategoryByIdController::class, '__invoke'] )->middleware('auth');
 Route::patch('/categories/{id}', [UpdateCategoryController::class, '__invoke'] )->middleware('auth');
 Route::delete('/categories/{id}', [DeleteCategoryController::class, '__invoke'] )->middleware('auth');
+Route::get('/categories/description/{id}', [GenerateCategoryDescriptionController::class, '__invoke'] )->middleware('auth');
 
 Route::get('/categories/products/{id}', [ListAllProductsByCategoryIdController::class, '__invoke'] )->middleware('auth');
 
@@ -48,6 +52,8 @@ Route::post('/products/description/{id}',[SaveDescriptionOpenAIController::class
 Route::patch('/products/description/{id}', [UpdateDescriptionOpenAIController::class, '__invoke'])->middleware('auth');
 Route::get('/products/description/info/{id}', [GetDescriptionOpenAIController::class, '__invoke'])->middleware('auth');
 
+Route::get('/products/image/description/{id}', [GenerateImageDescriptionController::class, '__invoke'])->middleware('auth');
 Route::get('/products/image/{id}', [GenerateImageController::class, '__invoke'])->middleware('auth');
 Route::post('/products/image/{id}', [SaveImageController::class, '__invoke'])->middleware('auth');
 Route::get('/products/images/{id}', [GetImagesByProductIdController::class, '__invoke'])->middleware('auth');
+Route::patch('/products/image/{id}', [UpdateImageByIdController::class, '__invoke'])->middleware('auth');
