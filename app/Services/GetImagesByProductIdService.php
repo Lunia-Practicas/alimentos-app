@@ -19,7 +19,6 @@ class GetImagesByProductIdService
 
         $images = $this->imageRepository->getImagesByIdProduct($id);
 
-
        return array_map(function ($image) {
            return [
                'id' => $image['id'],

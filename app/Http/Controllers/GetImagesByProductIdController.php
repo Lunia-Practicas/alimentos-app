@@ -15,10 +15,8 @@ class GetImagesByProductIdController extends Controller
 
     public function __invoke(Request $request)
     {
-        $images = $this->getImagesByIdService->__handle(new GetImagesByProductIdRequest(
+        return $this->getImagesByIdService->__handle(new GetImagesByProductIdRequest(
             $request->route('id')
         ));
-
-        return $images;
     }
 }

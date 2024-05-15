@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\Category;
 use App\Models\CategoryContent;
-use App\Models\ProductContent;
 use Illuminate\Support\Facades\Storage;
 use OpenAI;
 
@@ -87,5 +86,10 @@ class CategoryContentRepository
         }
 
 
+    }
+
+    public function getCategoryContent($id)
+    {
+        return CategoryContent::where('category_id', $id)->first();
     }
 }

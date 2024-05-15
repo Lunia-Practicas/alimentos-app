@@ -11,6 +11,7 @@ use App\Http\Controllers\GenerateImageController;
 use App\Http\Controllers\GenerateImageDescriptionController;
 use App\Http\Controllers\GenerateTitleController;
 use App\Http\Controllers\GetCategoryByIdController;
+use App\Http\Controllers\GetCategoryContentController;
 use App\Http\Controllers\GetDescriptionOpenAIController;
 use App\Http\Controllers\GetImagesByProductIdController;
 use App\Http\Controllers\GetProductByIdController;
@@ -40,6 +41,7 @@ Route::delete('/categories/{id}', [DeleteCategoryController::class, '__invoke'] 
 Route::get('/categories/description/{id}', [GenerateCategoryDescriptionController::class, '__invoke'] )->middleware('auth');
 Route::get('/categories/image/{id}', [GenerateCategoryImageController::class, '__invoke'] )->middleware('auth');
 Route::post('/categories/image/{id}', [SaveCategoryDescriptionImageController::class, '__invoke'])->middleware('auth');
+Route::get('/categories/content/{id}', [GetCategoryContentController::class, '__invoke'])->middleware('auth');
 
 Route::get('/categories/products/{id}', [ListAllProductsByCategoryIdController::class, '__invoke'] )->middleware('auth');
 
@@ -57,7 +59,7 @@ Route::patch('/products/description/{id}', [UpdateDescriptionOpenAIController::c
 Route::get('/products/description/info/{id}', [GetDescriptionOpenAIController::class, '__invoke'])->middleware('auth');
 
 Route::get('/products/image/description/{id}', [GenerateImageDescriptionController::class, '__invoke'])->middleware('auth');
+Route::get('/products/images/{id}', [GetImagesByProductIdController::class, '__invoke'])->middleware('auth');
 Route::get('/products/image/{id}', [GenerateImageController::class, '__invoke'])->middleware('auth');
 Route::post('/products/image/{id}', [SaveImageController::class, '__invoke'])->middleware('auth');
-Route::get('/products/images/{id}', [GetImagesByProductIdController::class, '__invoke'])->middleware('auth');
 Route::patch('/products/image/{id}', [UpdateImageByIdController::class, '__invoke'])->middleware('auth');

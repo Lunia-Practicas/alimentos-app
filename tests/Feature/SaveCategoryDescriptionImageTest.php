@@ -30,7 +30,7 @@ class SaveCategoryDescriptionImageTest extends TestCase
 
     #[Test] public function test_save_category_description_image()
     {
-            $category = Category::factory()->create([
+        $category = Category::factory()->create([
             'name' => 'Fruta'
         ]);
 
