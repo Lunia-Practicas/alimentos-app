@@ -5,6 +5,7 @@ use App\Http\Controllers\CreateProductController;
 use App\Http\Controllers\DeleteCategoryController;
 use App\Http\Controllers\DeleteProductController;
 use App\Http\Controllers\GenerateCategoryDescriptionController;
+use App\Http\Controllers\GenerateCategoryImageController;
 use App\Http\Controllers\GenerateDescriptionOpenAIController;
 use App\Http\Controllers\GenerateImageController;
 use App\Http\Controllers\GenerateImageDescriptionController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\GetProductByIdController;
 use App\Http\Controllers\ListAllCategoriesController;
 use App\Http\Controllers\ListAllProductsByCategoryIdController;
 use App\Http\Controllers\ListAllProductsController;
+use App\Http\Controllers\SaveCategoryDescriptionImageController;
 use App\Http\Controllers\SaveDescriptionOpenAIController;
 use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\SearchProductController;
@@ -36,6 +38,8 @@ Route::get('/categories/{id}', [GetCategoryByIdController::class, '__invoke'] )-
 Route::patch('/categories/{id}', [UpdateCategoryController::class, '__invoke'] )->middleware('auth');
 Route::delete('/categories/{id}', [DeleteCategoryController::class, '__invoke'] )->middleware('auth');
 Route::get('/categories/description/{id}', [GenerateCategoryDescriptionController::class, '__invoke'] )->middleware('auth');
+Route::get('/categories/image/{id}', [GenerateCategoryImageController::class, '__invoke'] )->middleware('auth');
+Route::post('/categories/image/{id}', [SaveCategoryDescriptionImageController::class, '__invoke'])->middleware('auth');
 
 Route::get('/categories/products/{id}', [ListAllProductsByCategoryIdController::class, '__invoke'] )->middleware('auth');
 

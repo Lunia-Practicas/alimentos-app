@@ -75,7 +75,7 @@ class SaveDescriptionOpenAITest extends TestCase
 
         $request2->setRouteResolver(function () use ($request2, $product) {
             return (new Route(
-                'GET',
+                'POST',
                 'api/description/{id}',
                 []
             ))->bind($request2);

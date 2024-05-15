@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Category;
 use App\Models\ProductContent;
 use App\Models\Image;
 use App\Models\Product;

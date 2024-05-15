@@ -87,27 +87,4 @@ class DescriptionRepository
         return $final;
     }
 
-    public function generateCategoryDescription($id)
-    {
-        $category = Category::findOrFail($id);
-
-        $client = OpenAI::factory()
-            ->withBaseUri('https://lunia-openai-sweden.openai.azure.com/openai/deployments/gpt-35-turbo-instruct')
-            ->withHttpHeader('api-key', '8a0e1587470a4f57ab4b9fa6acdb3efe')
-            ->withQueryParam('api-version', '2024-02-01')
-            ->make();
-
-        $response = $client->completions()->create([
-            'prompt' => 'Actúa como un redactor publicitario en tiendas online trabajando para un eCommerce que venda productos alimenticios. Dame la descripción para la ficha de la siguiente categoría usando el name: '.$category. '. Necesito que sea descriptivo y tenga una extensión de 100 palabras con un tono persuasivo',
-            'max_tokens' => 700,
-            'temperature' => 0.7
-        ]);
-
-        $final = '';
-        foreach ($response->choices as $choice) {
-            $final .= $choice->text;
-        }
-
-        return $final;
-    }
 }
