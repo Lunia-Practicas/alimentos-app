@@ -20,10 +20,10 @@ readonly class GetCategoryContentService
         $categoryContent =  $this->categoryContentRepository->getCategoryContent($id);
 
         return [
-            'id' => $categoryContent['id'],
-            'category_id' => $categoryContent['category_id'],
-            'description' => $categoryContent['description'],
-            'image' => Storage::url($categoryContent['image'])
+            'id' => $categoryContent['id'] ?? null,
+            'category_id' => $categoryContent['category_id'] ?? null,
+            'description' => $categoryContent['description'] ?? null,
+            'image' => Storage::url($categoryContent['image'] ?? null)
         ];
     }
 }

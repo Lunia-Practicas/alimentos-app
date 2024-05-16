@@ -21,9 +21,9 @@ class GetImagesByProductIdService
 
        return array_map(function ($image) {
            return [
-               'id' => $image['id'],
-               'product_id' => $image['product_id'],
-               'image' => Storage::url($image['image'])
+               'id' => $image['id'] ?? null,
+               'product_id' => $image['product_id'] ?? null,
+               'image' => Storage::url($image['image']) ?? null
            ];
        }, $images->toArray());
     }
