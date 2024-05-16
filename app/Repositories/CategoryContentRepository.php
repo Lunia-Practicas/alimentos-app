@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Category;
 use App\Models\CategoryContent;
+use App\Models\ProductContent;
 use Illuminate\Support\Facades\Storage;
 use OpenAI;
 
@@ -91,5 +92,25 @@ class CategoryContentRepository
     public function getCategoryContent($id)
     {
         return CategoryContent::where('category_id', $id)->first();
+    }
+
+    public function update($data)
+    {
+        $categoryContent = $this->getCategoryContent($data['id']);
+        $url = $data['image'];
+
+        if (!app()->environment('testing')) {
+            if (Storage::disk('public')->exists($categoryContent->image)) {
+                $contenido = file_get_contents($url);
+                Storage::disk('public')->put($categoryContent->image, $contenido);
+            }
+        }
+
+        $categoryContent->update([
+            'description' => $data['description']
+        ]);
+
+        return $categoryContent;
+
     }
 }

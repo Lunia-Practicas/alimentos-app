@@ -22,6 +22,7 @@ use App\Http\Controllers\SaveCategoryDescriptionImageController;
 use App\Http\Controllers\SaveDescriptionOpenAIController;
 use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\SearchProductController;
+use App\Http\Controllers\UpdateCategoryContentController;
 use App\Http\Controllers\UpdateCategoryController;
 use App\Http\Controllers\UpdateDescriptionOpenAIController;
 use App\Http\Controllers\UpdateImageByIdController;
@@ -42,6 +43,7 @@ Route::get('/categories/description/{id}', [GenerateCategoryDescriptionControlle
 Route::get('/categories/image/{id}', [GenerateCategoryImageController::class, '__invoke'] )->middleware('auth');
 Route::post('/categories/image/{id}', [SaveCategoryDescriptionImageController::class, '__invoke'])->middleware('auth');
 Route::get('/categories/content/{id}', [GetCategoryContentController::class, '__invoke'])->middleware('auth');
+Route::patch('/categories/content/{id}', [UpdateCategoryContentController::class, '__invoke'])->middleware('auth');
 
 Route::get('/categories/products/{id}', [ListAllProductsByCategoryIdController::class, '__invoke'] )->middleware('auth');
 
