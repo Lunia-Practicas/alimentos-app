@@ -22,7 +22,7 @@ class CategoryContentRepository
 
         $response = $client->images()->create([
             'model' => 'dall-e-3',
-            'prompt' => 'Dame la imagen que represente a esta categoría, usando el dato name de este objeto: '.$category,
+            'prompt' => 'Dame la ilustración detallada que represente a esta categoría, que tenga fondo blanco, usando el dato name de este objeto: '.$category,
             'n' => 1,
             'size' => '1024x1024',
         ]);
@@ -112,5 +112,46 @@ class CategoryContentRepository
 
         return $categoryContent;
 
+    }
+
+    public function getCategoryAndImage(): array
+    {
+        $categories = Category::all();
+
+        $resp = [];
+        foreach ($categories as $category) {
+            $categoryContent = $this->getCategoryContent($category->id);
+
+            $resp[] = [
+                'name' => $category->name,
+                'category_id' => $category->id,
+                'image' => $categoryContent->image ?? null
+            ];
+        }
+
+        return $resp;
+    }
+
+    public function search($request)
+    {
+        $categories = Category::query();
+
+        if(!is_null($request['name'])){
+            $categories->where('name', 'LIKE', "%{$request['name']}%");
+        }
+        $categories = $categories->get();
+
+        $resp = [];
+        foreach ($categories as $category) {
+            $categoryContent = $this->getCategoryContent($category->id);
+
+            $resp[] = [
+                'name' => $category->name,
+                'category_id' => $category->id,
+                'image' => $categoryContent->image ?? null
+            ];
+        }
+
+        return $resp;
     }
 }

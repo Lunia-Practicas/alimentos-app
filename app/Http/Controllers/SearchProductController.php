@@ -27,7 +27,7 @@ class SearchProductController extends Controller
             'max_weight' => 'nullable|numeric|min:0',
         ]);
 
-        $products = $this->searchProductService->handle(new SearchProductRequest(
+        return $this->searchProductService->handle(new SearchProductRequest(
             $request->input('name'),
             $request->input('origin'),
             $request->input('vegan'),
@@ -39,8 +39,5 @@ class SearchProductController extends Controller
             $request->input('max_weight'),
 
         ));
-
-
-        return $products;
     }
 }
