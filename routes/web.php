@@ -13,6 +13,7 @@ use App\Http\Controllers\GetProductByIdController;
 use App\Http\Controllers\ListAllCategoriesController;
 use App\Http\Controllers\ListAllProductsByCategoryIdController;
 use App\Http\Controllers\ListAllProductsController;
+use App\Http\Controllers\MakeOrdenAndSendEmailController;
 use App\Http\Controllers\SearchCategoryController;
 use App\Http\Controllers\SearchProductController;
 use App\Http\Controllers\GetProductsNameImagePriceController;
@@ -51,3 +52,5 @@ Route::get('/ionic/categories-image', [GetCategoryAndImageController::class, '__
 Route::get('/ionic/products/{id}', [GetProductsNameImagePriceController::class, '__invoke']);
 Route::get('/ionic/products/details/{id}', [GetProductAllDetailsController::class, '__invoke']);
 Route::post('/ionic/products/search', [SearchProductsNameImagePriceController::class, '__invoke']);
+
+Route::patch('/ionic/products/make-orden', [MakeOrdenAndSendEmailController::class, '__invoke']);
