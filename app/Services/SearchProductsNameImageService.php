@@ -17,6 +17,12 @@ readonly class SearchProductsNameImageService
             'id' => $param->id,
             'offset' => $param->offset,
             'limit' => $param->limit,
+            'minPrice' => $param->minPrice,
+            'maxPrice' => $param->maxPrice,
+            'minWeight' => $param->minWeight,
+            'maxWeight' => $param->maxWeight,
+            'vegan' => $param->vegan,
+            'gluten' => $param->gluten,
         ];
 
         return $this->productContentRepository->searchProductsNameImageLimit($data);
