@@ -15,6 +15,7 @@
     <p>Producto: {{$name}}</p>
     <p>Cantidad: {{$quantity}}</p>
     <p>Total: {{$total}} €</p>
+    <p>Nota: {{$note}}</p>
     <p class="mt-4">Un saludo,<br>Tus Alimentos</p>
 </div>
 </body>

@@ -28,7 +28,7 @@ class OrdenNotifyEmailClient extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS', 'example@example.com'),
-            subject: 'Orden Notification',
+            subject: 'Orden Client Notification',
         );
     }
 

@@ -28,7 +28,7 @@ class OrdenRepository
             'email' => $email,
             'quantity' => $quantity,
             'total' => $total,
-            'note' => $note ?? null,
+            'note' => $note,
             'name' => $product->name,
         ]);
         event(new OrdenCreated($orden));

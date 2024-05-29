@@ -23,7 +23,7 @@ class SendOrdenEmail implements ShouldQueue
         $name = $orden->name;
         $quantity = $orden->quantity;
         $total = $orden->total;
-        $note = $orden->note ?? null;
+        $note = $orden->note;
         $email = $orden->email;
 
         Mail::to($email)->send(new OrdenNotifyEmailClient($name, $total, $note, $quantity, $email));

@@ -11,11 +11,13 @@
 <body class="bg-gray-100 p-4">
 <div class="max-w-md mx-auto bg-white p-8 rounded shadow-md">
     <h2 class="text-2xl font-semibold mb-4">Pedido Realizado</h2>
-    <p>Acaba de realizar el siguiente pedido</p>
+    <p>El cliente {{$email}} acaba de realizar el siguiente pedido</p>
+    <p>----------</p>
     <p>Producto: {{$name}}</p>
     <p>Cantidad: {{$quantity}}</p>
     <p>Total: {{$total}} €</p>
-    <p class="mt-4">Cliente: {{$email}}</p>
+    <p>Nota: {{$note}}</p>
+    <p></p>Arre
 </div>
 </body>
 </html>

@@ -28,7 +28,8 @@ class OrdenNotifyEmailAdmin extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Orden Admin',
+            from: env('MAIL_FROM_ADDRESS', 'example@example.com'),
+            subject: 'Orden Admin Notification',
         );
     }
 
