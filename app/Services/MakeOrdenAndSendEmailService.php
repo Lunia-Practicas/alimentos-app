@@ -17,10 +17,11 @@ class MakeOrdenAndSendEmailService
         $data = [
             'id' => $param->id,
             'quantity' => $param->quantity,
+            'price' => $param->price,
             'email' => $param->email,
             'note' => $param->note,
         ];
 
-        $this->ordenRepository->makeOrdenAndSendEmail($data);
+        return $this->ordenRepository->makeOrdenAndSendEmail($data);
     }
 }

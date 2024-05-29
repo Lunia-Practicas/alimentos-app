@@ -53,4 +53,4 @@ Route::get('/ionic/products/{id}', [GetProductsNameImagePriceController::class, 
 Route::get('/ionic/products/details/{id}', [GetProductAllDetailsController::class, '__invoke']);
 Route::post('/ionic/products/search', [SearchProductsNameImagePriceController::class, '__invoke']);
 
-Route::patch('/ionic/products/make-orden', [MakeOrdenAndSendEmailController::class, '__invoke']);
+Route::post('/ionic/products/make-orden', [MakeOrdenAndSendEmailController::class, '__invoke']);

@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Product;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -9,14 +10,14 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class PruebaEmail extends Mailable
+class OrdenNotifyEmailAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(private $name)
+    public function __construct(private $name, private $total, private $note, private $quantity, private $email)
     {
         //
     }
@@ -27,7 +28,7 @@ class PruebaEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Prueba Email',
+            subject: 'Orden Admin',
         );
     }
 
@@ -37,8 +38,8 @@ class PruebaEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.pruebaEmail',
-            with: ['name' => $this->name]
+            view: 'mail.orden-admin',
+            with: ['name'=>$this->name, 'total'=>$this->total, 'note'=>$this->note, 'quantity'=>$this->quantity, 'email'=>$this->email]
         );
     }
 
