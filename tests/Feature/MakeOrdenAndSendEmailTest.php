@@ -33,15 +33,16 @@ class MakeOrdenAndSendEmailTest extends TestCase
         $product = Product::factory()->create([
             'category_id' => $category->id
         ]);
+        $product2 = Product::factory()->create([
+            'category_id' => $category->id
+        ]);
 
         $request = new Request([
-            'id' => $product->id,
+            'id' => $product2->id,
             'quantity' => 1,
             'price' => $product->price,
             'email' => 'jaimecaballero99@gmail.com'
         ]);
         $orden = $this->makeOrdenAndSendEmailController->__invoke($request);
-
-        dd($orden);
     }
 }

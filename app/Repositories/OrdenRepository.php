@@ -17,12 +17,11 @@ class OrdenRepository
     public function makeOrdenAndSendEmail($data)
     {
         $email = $data['email'];
-        $id_product = $data['id'];
         $note = $data['note'];
         $quantity = $data['quantity'];
         $total = $data['price'];
 
-        $product = Product::findOrFail($id_product)->first();
+        $product = Product::findOrFail($data['id']);
 
         $orden = Orden::create([
             'email' => $email,
