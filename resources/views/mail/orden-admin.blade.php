@@ -20,13 +20,15 @@
 <body>
 <div class="content">
     <h2 class="text-2xl font-semibold mb-4">Pedido Realizado</h2>
+    <h4>Hola Tus Alimentos!</h4>
     <p>El cliente {{$email}} acaba de realizar el siguiente pedido</p>
     <p>----------</p>
     <p>Producto: {{$name}}</p>
     <p>Cantidad: {{$quantity}}</p>
     <p>Total: {{$total}} €</p>
-    <p class="mt-4">Nota:  {{$note}}</p>
-    <p></p>
+    @if(!empty($note))
+        <p class="mt-4">Nota:  {{$note}}</p>
+    @endif
 </div>
 </body>
 </html>

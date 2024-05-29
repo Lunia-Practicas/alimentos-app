@@ -44,5 +44,9 @@ class MakeOrdenAndSendEmailTest extends TestCase
             'email' => 'jaimecaballero99@gmail.com'
         ]);
         $orden = $this->makeOrdenAndSendEmailController->__invoke($request);
+
+        $this->assertDatabaseHas('ordens', [
+            'name' => $product2->name,
+        ]);
     }
 }
