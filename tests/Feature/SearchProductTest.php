@@ -123,4 +123,24 @@ class SearchProductTest extends TestCase
 
        $this->assertCount(2, $products);
    }
+
+    #[Test] public function test_search_product_not_found()
+    {
+        Product::factory()->create([
+            'name' => 'test',
+            'category_id' => $this->category->id
+        ]);
+
+        Product::factory()->create([
+            'name' => 'other',
+            'category_id' => $this->category->id
+        ]);
+        $request = new Request([
+            'name' => 'notexist'
+        ]);
+
+        $products = $this->controller->__invoke($request);
+
+        $this->assertCount(0, $products);
+    }
 }

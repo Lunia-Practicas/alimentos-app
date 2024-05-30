@@ -48,7 +48,7 @@ class OrderRepository
         $orders = Order::query();
 
         if (!is_null($data['order_num'])){
-            $orders = $orders->where('order_num', 'like',"%{$data['order_num']}%");
+            $orders->where('order_num', 'like',"%{$data['order_num']}%");
         }
 
         if(!is_null($data['email'])){
@@ -56,8 +56,13 @@ class OrderRepository
         }
 
         if(!is_null($data['product_name'])){
-            $product= Product::where('name', 'like', "%{$data['product_name']}%")->first();
-            $orders->where('product_id', 'like', $product->id);
+            $product = Product::where('name', 'like', "%{$data['product_name']}%")->first();
+            if ($product !== null){
+                $orders->where('product_id', 'like', $product->id);
+            }else{
+                $orders->where('product_id', '===', 'null');
+            }
+
         }
 
         if(!is_null($data['category_id'])){
@@ -73,12 +78,12 @@ class OrderRepository
         }
 
         if(!is_null($data['min_date'])){
-            $minDate = Carbon::parse($data['min_data'])->startOfDay();
+            $minDate = Carbon::parse($data['min_date'])->startOfDay();
             $orders->where('created_at', '>=', $minDate);
         }
 
         if(!is_null($data['max_date'])){
-            $maxDate = Carbon::parse($data['max_data'])->endOfDay();
+            $maxDate = Carbon::parse($data['max_date'])->endOfDay();
             $orders->where('created_at', '<=', $maxDate);
         }
 

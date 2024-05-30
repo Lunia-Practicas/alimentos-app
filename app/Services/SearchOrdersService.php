@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Repositories\CategoryRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\ProductRepository;
+use Carbon\Carbon;
 
 readonly class SearchOrdersService
 {
@@ -41,7 +42,8 @@ readonly class SearchOrdersService
                 'category_name' => $category->name,
                 'note' => $order->note,
                 'quantity' => $order->quantity,
-                'create_date' => $order->created_at
+                'create_date' => Carbon::parse($order->created_at)->format('Y-m-d'),
+//                'create_date' => $order->created_at
             ];
         }
 
