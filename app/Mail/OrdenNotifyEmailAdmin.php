@@ -29,7 +29,7 @@ class OrdenNotifyEmailAdmin extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS', 'example@example.com'),
-            subject: 'Orden Admin Notification',
+            subject: 'Pedido Realizado',
         );
     }
 
