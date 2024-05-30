@@ -2,17 +2,17 @@
 
 namespace App\Services;
 
-use App\Repositories\OrdenRepository;
+use App\Repositories\OrderRepository;
 
-class MakeOrdenAndSendEmailService
+class MakeOrderAndSendEmailService
 {
 
-    public function __construct(private OrdenRepository $ordenRepository)
+    public function __construct(private OrderRepository $ordenRepository)
     {
 
     }
 
-    public function handle(MakeOrdenAndSendEmailRequest $param)
+    public function handle(MakeOrderAndSendEmailRequest $param)
     {
         $data = [
             'id' => $param->id,

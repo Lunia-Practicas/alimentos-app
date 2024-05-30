@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\MakeOrdenAndSendEmailRequest;
-use App\Services\MakeOrdenAndSendEmailService;
+use App\Services\MakeOrderAndSendEmailRequest;
+use App\Services\MakeOrderAndSendEmailService;
 use Illuminate\Http\Request;
 
-class MakeOrdenAndSendEmailController extends Controller
+class MakeOrderAndSendEmailController extends Controller
 {
-    public function __construct(private readonly MakeOrdenAndSendEmailService $makeOrdenAndSendEmailService)
+    public function __construct(private readonly MakeOrderAndSendEmailService $makeOrdenAndSendEmailService)
     {
     }
 
@@ -22,7 +22,7 @@ class MakeOrdenAndSendEmailController extends Controller
             'note' => 'nullable|string'
         ]);
 
-        return $this->makeOrdenAndSendEmailService->handle(new MakeOrdenAndSendEmailRequest(
+        return $this->makeOrdenAndSendEmailService->handle(new MakeOrderAndSendEmailRequest(
             $request->input('id'),
             $request->input('quantity'),
             $request->input('price'),

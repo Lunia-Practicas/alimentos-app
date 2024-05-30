@@ -2,16 +2,17 @@
 
 namespace App\Repositories;
 
-use App\Events\OrdenCreated;
-use App\Listeners\SendOrdenEmail;
-use App\Mail\OrdenNotifyEmailClient;
-use App\Mail\OrdenNotifyEmailAdmin;
-use App\Models\Orden;
+use App\DTO\OrderInformationDTO;
+use App\Events\OrderCreated;
+use App\Listeners\SendOrderEmail;
+use App\Mail\OrderNotifyEmailClient;
+use App\Mail\OrderNotifyEmailAdmin;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Mail;
 
-class OrdenRepository
+class OrderRepository
 {
 
     public function makeOrdenAndSendEmail($data)
@@ -23,14 +24,14 @@ class OrdenRepository
 
         $product = Product::findOrFail($data['id']);
 
-        $orden = Orden::create([
+        Order::create([
             'email' => $email,
-            'quantity' => $quantity,
-            'total' => $total,
+            'product_id' => $product->id,
+            'category_id' => $product->category_id,
             'note' => $note,
-            'name' => $product->name,
+            'quantity' => $quantity,
         ]);
-        event(new OrdenCreated($orden));
+        event(new OrderCreated(new OrderInformationDTO($email, $quantity,  $total,  $note, $product->name)));
 
         return [
             'product' => $product,

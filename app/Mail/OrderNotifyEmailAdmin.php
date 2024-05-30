@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Product;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -9,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class OrdenNotifyEmailClient extends Mailable
+class OrderNotifyEmailAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,7 +29,7 @@ class OrdenNotifyEmailClient extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS', 'example@example.com'),
-            subject: 'Orden Client Notification',
+            subject: 'Pedido Realizado',
         );
     }
 
@@ -38,8 +39,8 @@ class OrdenNotifyEmailClient extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.orden-client',
-            with: ['name'=> $this->name, 'total'=> $this->total, 'note'=> $this->note, 'quantity'=> $this->quantity, 'email'=>$this->email]
+            view: 'mail.order-admin',
+            with: ['name'=>$this->name, 'total'=>$this->total, 'note'=>$this->note, 'quantity'=>$this->quantity, 'email'=>$this->email]
         );
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-readonly class MakeOrdenAndSendEmailRequest
+readonly class MakeOrderAndSendEmailRequest
 {
     public function __construct(public mixed $id,
                                 public mixed $quantity,

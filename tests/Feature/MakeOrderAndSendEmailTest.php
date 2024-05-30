@@ -2,29 +2,28 @@
 
 namespace Tests\Feature;
 
-use App\Http\Controllers\MakeOrdenAndSendEmailController;
+use App\Http\Controllers\MakeOrderAndSendEmailController;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class MakeOrdenAndSendEmailTest extends TestCase
+class MakeOrderAndSendEmailTest extends TestCase
 {
     use RefreshDatabase;
     private Request $request;
 
-    private MakeOrdenAndSendEmailController $makeOrdenAndSendEmailController;
+    private MakeOrderAndSendEmailController $makeOrderAndSendEmailController;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->makeOrdenAndSendEmailController = $this->app->make(MakeOrdenAndSendEmailController::class);
+        $this->makeOrderAndSendEmailController = $this->app->make(MakeOrderAndSendEmailController::class);
     }
 
-    #[Test] public function test_make_orden_and_send_email()
+    #[Test] public function test_make_order_and_send_email()
     {
 
         $category = Category::factory()->create([
@@ -43,9 +42,9 @@ class MakeOrdenAndSendEmailTest extends TestCase
             'price' => $product->price,
             'email' => 'jaimecaballero99@gmail.com'
         ]);
-        $orden = $this->makeOrdenAndSendEmailController->__invoke($request);
+        $this->makeOrderAndSendEmailController->__invoke($request);
 
-        $this->assertDatabaseHas('ordens', [
+        $this->assertDatabaseHas('orders', [
             'name' => $product2->name,
         ]);
     }

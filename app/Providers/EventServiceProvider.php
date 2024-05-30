@@ -8,8 +8,8 @@ class EventServiceProvider extends ServiceProvider
 {
 
     protected $listen = [
-        'App\Events\OrdenCreated' => [
-            'App\Listeners\SendOrdenEmail'
+        'App\Events\OrderCreated' => [
+            'App\Listeners\SendOrderEmail'
         ]
     ];
 
