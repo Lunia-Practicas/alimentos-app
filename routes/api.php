@@ -21,6 +21,7 @@ use App\Http\Controllers\ListAllProductsController;
 use App\Http\Controllers\SaveCategoryDescriptionImageController;
 use App\Http\Controllers\SaveDescriptionOpenAIController;
 use App\Http\Controllers\SaveImageController;
+use App\Http\Controllers\SearchOrdersController;
 use App\Http\Controllers\SearchProductController;
 use App\Http\Controllers\UpdateCategoryContentController;
 use App\Http\Controllers\UpdateCategoryController;
@@ -65,3 +66,5 @@ Route::get('/products/images/{id}', [GetImagesByProductIdController::class, '__i
 Route::get('/products/image/{id}', [GenerateImageController::class, '__invoke'])->middleware('auth');
 Route::post('/products/image/{id}', [SaveImageController::class, '__invoke'])->middleware('auth');
 Route::patch('/products/image/{id}', [UpdateImageByIdController::class, '__invoke'])->middleware('auth');
+
+Route::post('/orders', [SearchOrdersController::class, '__invoke'])->middleware('auth');
