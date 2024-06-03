@@ -10,6 +10,7 @@ use App\Http\Controllers\GenerateCategoryImageController;
 use App\Http\Controllers\GenerateDescriptionOpenAIController;
 use App\Http\Controllers\GenerateImageController;
 use App\Http\Controllers\GenerateImageDescriptionController;
+use App\Http\Controllers\GenerateOrderPdfController;
 use App\Http\Controllers\GenerateTitleController;
 use App\Http\Controllers\GetCategoryByIdController;
 use App\Http\Controllers\GetCategoryContentController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\SaveDescriptionOpenAIController;
 use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\SearchOrdersController;
 use App\Http\Controllers\SearchProductController;
+use App\Http\Controllers\SendOrderPdfEmailController;
 use App\Http\Controllers\UpdateCategoryContentController;
 use App\Http\Controllers\UpdateCategoryController;
 use App\Http\Controllers\UpdateDescriptionOpenAIController;
@@ -71,3 +73,5 @@ Route::patch('/products/image/{id}', [UpdateImageByIdController::class, '__invok
 Route::post('/orders', [SearchOrdersController::class, '__invoke'])->middleware('auth');
 
 Route::post('/orders/export-excel', [ExportOrdersController::class, '__invoke'])->middleware('auth');
+Route::post('/orders/export-pdf', [GenerateOrderPdfController::class, '__invoke'])->middleware('auth');
+Route::post('/order/send-pdf', [SendOrderPdfEmailController::class, '__invoke'])->middleware('auth');

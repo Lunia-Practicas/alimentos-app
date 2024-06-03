@@ -8,7 +8,9 @@ use App\Exports\OrdersExport;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
 class OrderRepository
@@ -102,4 +104,57 @@ class OrderRepository
 
         return Excel::download($export, 'orders.xlsx');
     }
+
+    public function generateOrderPdf($data)
+    {
+        $order = Order::where('order_num', $data['order_num'])->first();
+        dump($data);
+        $product = Product::where('id', $order->product_id)->first();
+        $category = Category::where('id', $order->category_id)->first();
+
+        $order_pdf = [
+            'order' => $order,
+            'product' => $product,
+            'category' => $category,
+            'company' => [
+                'name' => config('aliments.company_name'),
+                'direction' => config('aliments.company_direction'),
+                'contact' => config('aliments.company_contact'),
+                'email' => config('aliments.company_email'),
+            ],
+        ];
+
+        $pdf = Pdf::loadView('pdf.order', $order_pdf);
+        return $pdf->download('order.pdf');
+    }
+
+    public function sendOrderPdfEmail($data)
+    {
+        $order = Order::where('order_num', $data['order_num'])->first();
+        $product = Product::where('id', $order->product_id)->first();
+        $category = Category::where('id', $order->category_id)->first();
+
+        $order_pdf = [
+            'order' => $order,
+            'product' => $product,
+            'category' => $category,
+            'company' => [
+                'name' => config('aliments.company_name'),
+                'direction' => config('aliments.company_direction'),
+                'contact' => config('aliments.company_contact'),
+                'email' => config('aliments.company_email'),
+            ],
+        ];
+
+        $pdf = Pdf::loadView('pdf.order', $order_pdf);
+
+         Mail::send('pdf.order-send', $order_pdf, function ($message) use ($order_pdf, $pdf) {
+            $message->to($order_pdf['order']->email, $order_pdf['order']->email)
+                ->subject('Número pedido: '.$order_pdf['order']->order_num)
+                ->attachData($pdf->output(), "order.pdf");
+        });
+
+        return $pdf->download('order.pdf');
+    }
 }
+
