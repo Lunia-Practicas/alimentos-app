@@ -4,14 +4,12 @@ namespace App\Repositories;
 
 use App\DTO\OrderInformationDTO;
 use App\Events\OrderCreated;
-use App\Listeners\SendOrderEmail;
-use App\Mail\OrderNotifyEmailClient;
-use App\Mail\OrderNotifyEmailAdmin;
+use App\Exports\OrdersExport;
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrderRepository
 {
@@ -66,7 +64,14 @@ class OrderRepository
         }
 
         if(!is_null($data['category_id'])){
-            $orders->where('category_id', 'like', "%{$data['category_id']}%");
+            $category = Category::where('id', 'like', "%{$data['category_id']}%")->first();
+            if ($category !== null){
+                $orders->where('category_id', 'like', $category->id);
+            }else{
+                $orders->where('category_id', '===', 'null');
+            }
+
+//            $orders->where('category_id', 'like', "%{$data['category_id']}%");
         }
 
         if(!is_null($data['note'])){
@@ -89,5 +94,12 @@ class OrderRepository
 
         return $orders->get();
 
+    }
+
+    public function exportExcel($data)
+    {
+        $export = new OrdersExport($data);
+
+        return Excel::download($export, 'orders.xlsx');
     }
 }

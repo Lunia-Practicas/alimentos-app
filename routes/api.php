@@ -4,6 +4,7 @@ use App\Http\Controllers\CreateCategoryController;
 use App\Http\Controllers\CreateProductController;
 use App\Http\Controllers\DeleteCategoryController;
 use App\Http\Controllers\DeleteProductController;
+use App\Http\Controllers\ExportOrdersController;
 use App\Http\Controllers\GenerateCategoryDescriptionController;
 use App\Http\Controllers\GenerateCategoryImageController;
 use App\Http\Controllers\GenerateDescriptionOpenAIController;
@@ -68,3 +69,5 @@ Route::post('/products/image/{id}', [SaveImageController::class, '__invoke'])->m
 Route::patch('/products/image/{id}', [UpdateImageByIdController::class, '__invoke'])->middleware('auth');
 
 Route::post('/orders', [SearchOrdersController::class, '__invoke'])->middleware('auth');
+
+Route::post('/orders/export-excel', [ExportOrdersController::class, '__invoke'])->middleware('auth');
