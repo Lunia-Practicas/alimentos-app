@@ -108,7 +108,6 @@ class OrderRepository
     public function generateOrderPdf($data)
     {
         $order = Order::where('order_num', $data['order_num'])->first();
-        dump($data);
         $product = Product::where('id', $order->product_id)->first();
         $category = Category::where('id', $order->category_id)->first();
 
