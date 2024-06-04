@@ -3,9 +3,11 @@
 namespace App\Repositories;
 
 use App\DTO\OrderInformationDTO;
+use App\Events\EmailCreated;
 use App\Events\OrderCreated;
 use App\Exports\OrdersExport;
 use App\Models\Category;
+use App\Models\Email;
 use App\Models\Order;
 use App\Models\Product;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -32,7 +34,10 @@ class OrderRepository
             'note' => $note,
             'quantity' => $quantity,
         ]);
+
+
         event(new OrderCreated(new OrderInformationDTO($email, $quantity,  $total,  $note, $product->name)));
+        event(new EmailCreated($email));
 
         return [
             'product' => $product,
