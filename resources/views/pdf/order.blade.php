@@ -59,6 +59,7 @@
             margin-bottom: 20px;
         }
         .terms {
+            font-size: xx-small;
             padding: 20px;
             background-color: #ffffff;
             border: 1px solid #dee2e6;
@@ -117,7 +118,7 @@
     <div class="order-details">
         <h2>Número de pedido: {{$order->order_num}}</h2>
         <div class="dates-section">
-            <p><strong>Fecha Emisión:</strong> {{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y') }}</p>
+            <p style="margin-bottom: 10px"><strong>Fecha Emisión:</strong> {{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y') }}</p>
             <p><strong>Fecha Vencimiento:</strong> {{ \Carbon\Carbon::parse($order->created_at)->addDays(30)->format('d/m/Y') }}</p>
         </div>
         <table class="table table-bordered">
@@ -146,44 +147,42 @@
         </table>
         @if($order->note)
             <div class="note-section">
-                <h4>Nota del Cliente</h4>
-                <p>{{ $order->note }}</p>
+                <h4>Nota del Cliente:</h4>
+                <p style="font-family: cursive; text-align: center">{{ $order->note }}</p>
             </div>
         @endif
     </div>
 
     <!-- Terms and Conditions -->
     <div class="terms">
-        <h4>Términos y Condiciones</h4>
-        <p><strong>1. Introducción</strong></p>
-        <p>Estos términos y condiciones establecen las reglas y regulaciones para el uso de los servicios proporcionados por {{$company['name']}}.</p>
+        <h3>Términos y Condiciones</h3>
 
-        <p><strong>2. Pedidos y Pagos</strong></p>
+        <p><strong>1. Pedidos y Pagos</strong></p>
         <p>Todos los pedidos están sujetos a la disponibilidad de los productos. Los precios y la disponibilidad pueden estar sujetos a cambios sin previo aviso. El pago debe realizarse en su totalidad al momento de la compra.</p>
 
-        <p><strong>3. Envío y Entrega</strong></p>
+        <p><strong>2. Envío y Entrega</strong></p>
         <p>Hacemos todo lo posible para entregar los productos dentro de los plazos estimados. Sin embargo, no nos hacemos responsables de los retrasos debidos a circunstancias fuera de nuestro control.</p>
 
-        <p><strong>4. Devoluciones y Reembolsos</strong></p>
-        <p>Las devoluciones son aceptadas dentro de los 30 días posteriores a la recepción del pedido, siempre que los productos estén en su estado original. Los reembolsos se procesarán en un plazo de 14 días a partir de la recepción de la devolución.</p>
+{{--        <p><strong>4. Devoluciones y Reembolsos</strong></p>--}}
+{{--        <p>Las devoluciones son aceptadas dentro de los 30 días posteriores a la recepción del pedido, siempre que los productos estén en su estado original. Los reembolsos se procesarán en un plazo de 14 días a partir de la recepción de la devolución.</p>--}}
 
-        <p><strong>5. Garantías y Responsabilidad</strong></p>
-        <p>Nuestros productos están garantizados contra defectos de fabricación por un período de 12 meses. No nos hacemos responsables de los daños derivados del uso indebido de los productos.</p>
+{{--        <p><strong>5. Garantías y Responsabilidad</strong></p>--}}
+{{--        <p>Nuestros productos están garantizados contra defectos de fabricación por un período de 12 meses. No nos hacemos responsables de los daños derivados del uso indebido de los productos.</p>--}}
 
-        <p><strong>6. Protección de Datos</strong></p>
-        <p>Nos comprometemos a proteger su privacidad y sus datos personales. Para más información, consulte nuestra Política de Privacidad.</p>
+{{--        <p><strong>6. Protección de Datos</strong></p>--}}
+{{--        <p>Nos comprometemos a proteger su privacidad y sus datos personales. Para más información, consulte nuestra Política de Privacidad.</p>--}}
 
-        <p><strong>7. Modificaciones</strong></p>
-        <p>Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento. Los cambios serán efectivos a partir de su publicación en nuestro sitio web.</p>
+{{--        <p><strong>7. Modificaciones</strong></p>--}}
+{{--        <p>Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento. Los cambios serán efectivos a partir de su publicación en nuestro sitio web.</p>--}}
 
-        <p><strong>8. Contacto</strong></p>
-        <p>Si tiene alguna pregunta o inquietud sobre estos términos y condiciones, puede contactarnos a través del correo electrónico: {{$company['email']}}.</p>
+{{--        <p><strong>8. Contacto</strong></p>--}}
+{{--        <p>Si tiene alguna pregunta o inquietud sobre estos términos y condiciones, puede contactarnos a través del correo electrónico: {{$company['email']}}.</p>--}}
 
-        <p><strong>9. Ley Aplicable</strong></p>
-        <p>Estos términos y condiciones se regirán e interpretarán de acuerdo con las leyes del país en el que operamos, sin tener en cuenta sus conflictos de disposiciones legales.</p>
+{{--        <p><strong>9. Ley Aplicable</strong></p>--}}
+{{--        <p>Estos términos y condiciones se regirán e interpretarán de acuerdo con las leyes del país en el que operamos, sin tener en cuenta sus conflictos de disposiciones legales.</p>--}}
 
-        <p><strong>10. Aceptación de los Términos</strong></p>
-        <p>Al realizar un pedido con nosotros, usted acepta estos términos y condiciones en su totalidad.</p>
+{{--        <p><strong>10. Aceptación de los Términos</strong></p>--}}
+{{--        <p>Al realizar un pedido con nosotros, usted acepta estos términos y condiciones en su totalidad.</p>--}}
     </div>
 </div>
 <!-- Footer -->
@@ -192,6 +191,8 @@
     <p>© 2024 {{$company['name']}}. Todos los derechos reservados.</p>
 </div>
 
+
+{{-- Paginación --}}
 <script type="text/php">
     if ( isset($pdf) ) {
         $pdf->page_script('

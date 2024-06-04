@@ -3,10 +3,13 @@
 namespace Tests\Feature;
 
 use App\Http\Controllers\MakeOrderAndSendEmailController;
+use App\Mail\OrderNotifyEmailAdmin;
+use App\Mail\OrderNotifyEmailClient;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -25,6 +28,7 @@ class MakeOrderAndSendEmailTest extends TestCase
 
     #[Test] public function test_make_order_and_send_email()
     {
+        Mail::fake();
 
         $category = Category::factory()->create([
             'name' => 'Fruta'
@@ -49,5 +53,8 @@ class MakeOrderAndSendEmailTest extends TestCase
         $this->assertDatabaseHas('orders', [
             'product_id' => $product2->id,
         ]);
+
+        Mail::assertSent(OrderNotifyEmailClient::class);
+        Mail::assertSent(OrderNotifyEmailAdmin::class);
     }
 }

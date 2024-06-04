@@ -29,11 +29,22 @@
             flex-direction: column;
             justify-content: center;
         }
+        .order-details {
+            margin-bottom: 20px;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
 <div class="order-details">
     <h2>Hola {{$order->email}}. Aquí se adjunta su pedido</h2>
+    <div class="company-details">
+        <img src="{{ $message->embed(public_path('img/logo.jpg')) }}" alt="logo" height="100" width="100">
+        <h2>{{$company['name']}}</h2>
+        <p>{{$company['direction']}}</p>
+        <p>Teléfono: {{$company['contact']}}</p>
+        <p>Email: {{$company['email']}}</p>
+    </div>
 </div>
 
 </body>

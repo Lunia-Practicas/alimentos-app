@@ -25,14 +25,14 @@ class SendOrderPdfEmailTest extends TestCase
 
     #[Test] public function testSendOrderPdfEmail()
     {
+        Mail::fake();
+
         $orderA = Order::factory()->create();
         Order::factory()->create();
 
         $request = new Request([
             'order_num' => $orderA->order_num,
         ]);
-
-        Mail::fake();
 
         $response = $this->controller->__invoke($request);
 
