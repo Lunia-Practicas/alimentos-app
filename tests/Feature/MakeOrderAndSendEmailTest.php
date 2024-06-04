@@ -29,6 +29,7 @@ class MakeOrderAndSendEmailTest extends TestCase
         $category = Category::factory()->create([
             'name' => 'Fruta'
         ]);
+
         $product = Product::factory()->create([
             'category_id' => $category->id
         ]);
@@ -42,10 +43,11 @@ class MakeOrderAndSendEmailTest extends TestCase
             'price' => $product->price,
             'email' => 'jaimecaballero99@gmail.com'
         ]);
+
         $this->makeOrderAndSendEmailController->__invoke($request);
 
         $this->assertDatabaseHas('orders', [
-            'name' => $product2->name,
+            'product_id' => $product2->id,
         ]);
     }
 }

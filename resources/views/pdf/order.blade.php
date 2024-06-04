@@ -146,7 +146,7 @@
         </table>
         @if($order->note)
             <div class="note-section">
-                <h4>Nota del Pedido</h4>
+                <h4>Nota del Cliente</h4>
                 <p>{{ $order->note }}</p>
             </div>
         @endif
@@ -191,5 +191,14 @@
     <p>Gracias por su compra</p>
     <p>© 2024 {{$company['name']}}. Todos los derechos reservados.</p>
 </div>
+
+<script type="text/php">
+    if ( isset($pdf) ) {
+        $pdf->page_script('
+            $font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
+            $pdf->text(270, 800, "Página $PAGE_NUM de $PAGE_COUNT", $font, 10);
+        ');
+    }
+</script>
 </body>
 </html>

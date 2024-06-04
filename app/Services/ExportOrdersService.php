@@ -28,7 +28,6 @@ readonly class ExportOrdersService
             'max_date' => $param->max_date,
         ];
 
-        $resultOrder = [];
 
         $orders = $this->orderRepository->searchOrders($data);
 

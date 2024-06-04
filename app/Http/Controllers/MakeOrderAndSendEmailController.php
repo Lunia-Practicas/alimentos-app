@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class MakeOrderAndSendEmailController extends Controller
 {
-    public function __construct(private readonly MakeOrderAndSendEmailService $makeOrdenAndSendEmailService)
+    public function __construct(private readonly MakeOrderAndSendEmailService $makeOrderAndSendEmailService)
     {
     }
 
@@ -22,7 +22,7 @@ class MakeOrderAndSendEmailController extends Controller
             'note' => 'nullable|string'
         ]);
 
-        return $this->makeOrdenAndSendEmailService->handle(new MakeOrderAndSendEmailRequest(
+        return $this->makeOrderAndSendEmailService->handle(new MakeOrderAndSendEmailRequest(
             $request->input('id'),
             $request->input('quantity'),
             $request->input('price'),
