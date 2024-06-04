@@ -120,7 +120,7 @@ class OrderRepository
                 'direction' => config('aliments.company_direction'),
                 'contact' => config('aliments.company_contact'),
                 'email' => config('aliments.company_email'),
-            ],
+            ]
         ];
 
         $pdf = Pdf::loadView('pdf.order', $order_pdf);
