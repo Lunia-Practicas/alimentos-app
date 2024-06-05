@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\OrderRepository;
 use App\Services\SearchOrdersRequest;
 use App\Services\SearchOrdersService;
 use Illuminate\Http\Request;

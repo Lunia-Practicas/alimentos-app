@@ -3,6 +3,7 @@
 use App\Http\Controllers\CreateCategoryController;
 use App\Http\Controllers\CreateProductController;
 use App\Http\Controllers\DeleteCategoryController;
+use App\Http\Controllers\DeleteEmailController;
 use App\Http\Controllers\DeleteProductController;
 use App\Http\Controllers\ExportOrdersController;
 use App\Http\Controllers\GenerateCategoryDescriptionController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\ListAllProductsController;
 use App\Http\Controllers\SaveCategoryDescriptionImageController;
 use App\Http\Controllers\SaveDescriptionOpenAIController;
 use App\Http\Controllers\SaveImageController;
+use App\Http\Controllers\SearchEmailsController;
 use App\Http\Controllers\SearchOrdersController;
 use App\Http\Controllers\SearchProductController;
 use App\Http\Controllers\SendOrderPdfEmailController;
@@ -75,3 +77,6 @@ Route::post('/orders', [SearchOrdersController::class, '__invoke'])->middleware(
 Route::post('/orders/export-excel', [ExportOrdersController::class, '__invoke'])->middleware('auth');
 Route::post('/orders/export-pdf', [GenerateOrderPdfController::class, '__invoke'])->middleware('auth');
 Route::post('/order/send-pdf', [SendOrderPdfEmailController::class, '__invoke'])->middleware('auth');
+
+Route::post('/emails', [SearchEmailsController::class, '__invoke'])->middleware('auth');
+Route::delete('/emails/{id}', [DeleteEmailController::class, '__invoke'])->middleware('auth');

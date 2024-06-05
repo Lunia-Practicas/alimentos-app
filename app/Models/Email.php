@@ -12,7 +12,7 @@ class Email extends Model
 
     use HasFactory, Notifiable;
 
-    protected $fillable = ['email'];
+    protected $fillable = ['email', 'name_client', 'city', 'address'];
 
     const UPDATED_AT = null;
 

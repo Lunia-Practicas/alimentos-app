@@ -20,6 +20,9 @@ class MakeOrderAndSendEmailService
             'price' => $param->price,
             'email' => $param->email,
             'note' => $param->note,
+            'name_client' => $param->name_client,
+            'city' => $param->city,
+            'address' => $param->address,
         ];
 
         return $this->ordenRepository->makeOrdenAndSendEmail($data);

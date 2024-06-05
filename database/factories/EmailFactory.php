@@ -11,6 +11,9 @@ class EmailFactory extends Factory
     {
         return [
             'email' => $this->faker->unique()->safeEmail(),
+            'name_client' => $this->faker->name(),
+            'city' => $this->faker->city(),
+            'address' => $this->faker->address(),
         ];
     }
 }

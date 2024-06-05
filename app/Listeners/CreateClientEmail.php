@@ -13,13 +13,21 @@ class CreateClientEmail implements ShouldQueue
 
     public function handle(EmailCreated $event)
     {
-        $email = $event->email;
+        $email_content = $event->email_content;
+
+        $email = $email_content->email;
+        $name_client = $email_content->name_client;
+        $city = $email_content->city;
+        $address = $email_content->address;
 
         $emails = Email::query();
 
         if (!$emails->where('email', $email)->exists()) {
             Email::create([
-                'email' => $email
+                'email' => $email,
+                'name_client' => $name_client,
+                'city' => $city,
+                'address' => $address,
             ]);
         }
 

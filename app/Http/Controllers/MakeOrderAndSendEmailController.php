@@ -19,7 +19,10 @@ class MakeOrderAndSendEmailController extends Controller
             'quantity' => 'required|integer|min:1',
             'price' => 'required|numeric|min:0',
             'email' => 'required|email',
-            'note' => 'nullable|string'
+            'note' => 'nullable|string',
+            'name_client' => 'required|string',
+            'city' => 'required|string',
+            'address' => 'required|string'
         ]);
 
         return $this->makeOrderAndSendEmailService->handle(new MakeOrderAndSendEmailRequest(
@@ -27,7 +30,10 @@ class MakeOrderAndSendEmailController extends Controller
             $request->input('quantity'),
             $request->input('price'),
             $request->input('email'),
-            $request->input('note')
+            $request->input('note'),
+            $request->input('name_client'),
+            $request->input('city'),
+            $request->input('address')
         ));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\DTO\EmailInformationDTO;
 use App\DTO\OrderInformationDTO;
 use App\Events\EmailCreated;
 use App\Events\OrderCreated;
@@ -24,6 +25,9 @@ class OrderRepository
         $note = $data['note'];
         $quantity = $data['quantity'];
         $total = $data['price'];
+        $name_client = $data['name_client'];
+        $city = $data['city'];
+        $address = $data['address'];
 
         $product = Product::findOrFail($data['id']);
 
@@ -37,7 +41,7 @@ class OrderRepository
 
 
         event(new OrderCreated(new OrderInformationDTO($email, $quantity,  $total,  $note, $product->name)));
-        event(new EmailCreated($email));
+        event(new EmailCreated(new EmailInformationDTO($email, $name_client, $city, $address)));
 
         return [
             'product' => $product,
@@ -115,28 +119,7 @@ class OrderRepository
         $order = Order::where('order_num', $data['order_num'])->first();
         $product = Product::where('id', $order->product_id)->first();
         $category = Category::where('id', $order->category_id)->first();
-
-        $order_pdf = [
-            'order' => $order,
-            'product' => $product,
-            'category' => $category,
-            'company' => [
-                'name' => config('aliments.company_name'),
-                'direction' => config('aliments.company_direction'),
-                'contact' => config('aliments.company_contact'),
-                'email' => config('aliments.company_email'),
-            ]
-        ];
-
-        $pdf = Pdf::loadView('pdf.order', $order_pdf);
-        return $pdf->download('order.pdf');
-    }
-
-    public function sendOrderPdfEmail($data)
-    {
-        $order = Order::where('order_num', $data['order_num'])->first();
-        $product = Product::where('id', $order->product_id)->first();
-        $category = Category::where('id', $order->category_id)->first();
+        $client = Email::where('email', $order->email)->first();
 
         $order_pdf = [
             'order' => $order,
@@ -148,6 +131,31 @@ class OrderRepository
                 'contact' => config('aliments.company_contact'),
                 'email' => config('aliments.company_email'),
             ],
+            'client' => $client,
+        ];
+
+        $pdf = Pdf::loadView('pdf.order', $order_pdf);
+        return $pdf->download('order.pdf');
+    }
+
+    public function sendOrderPdfEmail($data)
+    {
+        $order = Order::where('order_num', $data['order_num'])->first();
+        $product = Product::where('id', $order->product_id)->first();
+        $category = Category::where('id', $order->category_id)->first();
+        $client = Email::where('email', $order->email)->first();
+
+        $order_pdf = [
+            'order' => $order,
+            'product' => $product,
+            'category' => $category,
+            'company' => [
+                'name' => config('aliments.company_name'),
+                'direction' => config('aliments.company_direction'),
+                'contact' => config('aliments.company_contact'),
+                'email' => config('aliments.company_email'),
+            ],
+            'client' => $client,
         ];
 
         $pdf = Pdf::loadView('pdf.order', $order_pdf);

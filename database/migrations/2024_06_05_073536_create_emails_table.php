@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
 
             $table->string('email')->unique();
+            $table->string('city');
+            $table->string('name_client');
+            $table->string('address');
 
             $table->timestamp('created_at');
         });

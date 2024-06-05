@@ -101,9 +101,9 @@
     <div class="company-client-details">
         <div class="client-details">
             <h2>Datos del Cliente</h2>
-            <p><strong>Nombre:</strong> nombre_cliente</p>
+            <p><strong>Nombre:</strong> {{$client->name_client}}</p>
             <p><strong>Email:</strong> {{$order->email}}</p>
-            <p><strong>Dirección:</strong> direccion_cliente</p>
+            <p><strong>Dirección:</strong> {{$client->address}}, {{$client->city}}</p>
         </div>
         <div class="company-details">
             <img src="{{ public_path('img/logo.jpg') }}" alt="logo" height="100" width="100">
