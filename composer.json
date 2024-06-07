@@ -13,7 +13,8 @@
         "laravel/tinker": "^2.9",
         "maatwebsite/excel": "^3.1",
         "openai-php/laravel": "^0.8.1",
-        "ext-http": "*"
+        "ext-http": "*",
+        "ext-dom": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^2.0",

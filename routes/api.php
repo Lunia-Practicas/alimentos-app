@@ -9,6 +9,7 @@ use App\Http\Controllers\ExportOrdersController;
 use App\Http\Controllers\GenerateCategoryDescriptionController;
 use App\Http\Controllers\GenerateCategoryImageController;
 use App\Http\Controllers\GenerateDescriptionOpenAIController;
+use App\Http\Controllers\GenerateEmailController;
 use App\Http\Controllers\GenerateImageController;
 use App\Http\Controllers\GenerateImageDescriptionController;
 use App\Http\Controllers\GenerateOrderPdfController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\SearchEmailsController;
 use App\Http\Controllers\SearchOrdersController;
 use App\Http\Controllers\SearchProductController;
+use App\Http\Controllers\SendGenerateEmailController;
 use App\Http\Controllers\SendOrderPdfEmailController;
 use App\Http\Controllers\UpdateCategoryContentController;
 use App\Http\Controllers\UpdateCategoryController;
@@ -80,3 +82,5 @@ Route::post('/order/send-pdf', [SendOrderPdfEmailController::class, '__invoke'])
 
 Route::post('/emails', [SearchEmailsController::class, '__invoke'])->middleware('auth');
 Route::delete('/emails/{id}', [DeleteEmailController::class, '__invoke'])->middleware('auth');
+Route::post('/emails/generate-email', [GenerateEmailController::class, '__invoke'])->middleware('auth');
+Route::post('/emails/send-generate-email', [SendGenerateEmailController::class, '__invoke'])->middleware('auth');

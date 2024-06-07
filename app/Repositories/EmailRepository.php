@@ -2,8 +2,14 @@
 
 namespace App\Repositories;
 
+use App\Mail\GenerateEmail;
 use App\Models\Email;
 use Carbon\Carbon;
+use DOMDocument;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
 
 class EmailRepository
 {
@@ -48,5 +54,55 @@ class EmailRepository
     public function deleteEmail($id)
     {
         Email::findOrFail($id)->delete();
+    }
+
+    public function generateEmail($data)
+    {
+        $subjectContent = $data['subjectContent'];
+        $htmlContent = $data['htmlContent'];
+    }
+
+    public function sendGenerateEmail($data)
+    {
+        $subjectContent = $data['subjectContent'];
+        $htmlContent = $data['htmlContent'];
+
+        $dom = new DomDocument();
+
+        $dom->loadHTML($htmlContent);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $image) {
+            $src = $image->getAttribute('src');
+
+            list($type, $data) = explode(';', $src);
+            list(, $data)      = explode(',', $data);
+
+            // Decodificar los datos en base64
+            $data = base64_decode($data);
+
+            // Generar un nombre de archivo único
+            $imageName = 'imagen_' . time() . '_' . uniqid() . '.jpg';
+
+            Storage::disk('public')->put('imagenes/'.$imageName, $data);
+
+            $newSrc = asset(Storage::disk('public')->url('imagenes/'.$imageName));
+
+//            dump($newSrc);
+
+//            {{ $message->embed(public_path('img/logo.jpg')) }}
+
+            $image->setAttribute('src', $newSrc);
+        }
+        $newHtml = $dom->saveHTML();
+
+//        dump($newHtml);
+
+        $emails = Email::all();
+        foreach ($emails as $email) {
+            Mail::to($email->email)->send(new GenerateEmail($subjectContent, $newHtml));
+        }
+
     }
 }

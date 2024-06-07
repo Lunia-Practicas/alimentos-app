@@ -35,7 +35,7 @@ readonly class SearchEmailsService
                 'name_client' => $email->name_client,
                 'city' => $email->city,
                 'address' => $email->address,
-                'created_at' => Carbon::parse($email->created_at)->format('Y-m-d'),
+                'created_at' => $email->created_at,
             ];
         }
 
