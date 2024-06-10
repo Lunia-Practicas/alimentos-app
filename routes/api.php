@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\CreateCategoryController;
+use App\Http\Controllers\CreateEmailTemplateController;
 use App\Http\Controllers\CreateProductController;
 use App\Http\Controllers\DeleteCategoryController;
 use App\Http\Controllers\DeleteEmailController;
+use App\Http\Controllers\DeleteEmailTemplateController;
 use App\Http\Controllers\DeleteProductController;
 use App\Http\Controllers\ExportOrdersController;
 use App\Http\Controllers\GenerateCategoryDescriptionController;
@@ -17,6 +19,7 @@ use App\Http\Controllers\GenerateTitleController;
 use App\Http\Controllers\GetCategoryByIdController;
 use App\Http\Controllers\GetCategoryContentController;
 use App\Http\Controllers\GetDescriptionOpenAIController;
+use App\Http\Controllers\GetEmailTemplateController;
 use App\Http\Controllers\GetImagesByProductIdController;
 use App\Http\Controllers\GetProductByIdController;
 use App\Http\Controllers\ListAllCategoriesController;
@@ -33,6 +36,7 @@ use App\Http\Controllers\SendOrderPdfEmailController;
 use App\Http\Controllers\UpdateCategoryContentController;
 use App\Http\Controllers\UpdateCategoryController;
 use App\Http\Controllers\UpdateDescriptionOpenAIController;
+use App\Http\Controllers\UpdateEmailTemplateController;
 use App\Http\Controllers\UpdateImageByIdController;
 use App\Http\Controllers\UpdateProductController;
 use Illuminate\Http\Request;
@@ -84,3 +88,8 @@ Route::post('/emails', [SearchEmailsController::class, '__invoke'])->middleware(
 Route::delete('/emails/{id}', [DeleteEmailController::class, '__invoke'])->middleware('auth');
 Route::post('/emails/generate-email', [GenerateEmailController::class, '__invoke'])->middleware('auth');
 Route::post('/emails/send-generate-email', [SendGenerateEmailController::class, '__invoke'])->middleware('auth');
+
+Route::post('/email-templates', [CreateEmailTemplateController::class, '__invoke'])->middleware('auth');
+Route::get('/email-templates/{id}', [GetEmailTemplateController::class, '__invoke'])->middleware('auth');
+Route::patch('/email-templates/update/{id}', [UpdateEmailTemplateController::class, '__invoke'])->middleware('auth');
+Route::delete('/email-templates/{id}', [DeleteEmailTemplateController::class, '__invoke'])->middleware('auth');
