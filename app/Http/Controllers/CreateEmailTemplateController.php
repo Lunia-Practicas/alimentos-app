@@ -15,7 +15,7 @@ class CreateEmailTemplateController extends Controller
     public function __invoke(Request $request)
     {
         $request->validate([
-            'title' => 'required|string',
+            'title' => 'required|unique:email_templates',
             'subject' => 'required|string',
             'body' => 'required|string',
         ]);

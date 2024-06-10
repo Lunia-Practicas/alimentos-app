@@ -23,6 +23,7 @@ use App\Http\Controllers\GetEmailTemplateController;
 use App\Http\Controllers\GetImagesByProductIdController;
 use App\Http\Controllers\GetProductByIdController;
 use App\Http\Controllers\ListAllCategoriesController;
+use App\Http\Controllers\ListAllEmailTemplateController;
 use App\Http\Controllers\ListAllProductsByCategoryIdController;
 use App\Http\Controllers\ListAllProductsController;
 use App\Http\Controllers\SaveCategoryDescriptionImageController;
@@ -93,3 +94,4 @@ Route::post('/email-templates', [CreateEmailTemplateController::class, '__invoke
 Route::get('/email-templates/{id}', [GetEmailTemplateController::class, '__invoke'])->middleware('auth');
 Route::patch('/email-templates/update/{id}', [UpdateEmailTemplateController::class, '__invoke'])->middleware('auth');
 Route::delete('/email-templates/{id}', [DeleteEmailTemplateController::class, '__invoke'])->middleware('auth');
+Route::get('/email-templates', [ListAllEmailTemplateController::class, '__invoke'])->middleware('auth');
