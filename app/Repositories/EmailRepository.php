@@ -91,7 +91,7 @@ class EmailRepository
 
 //            dump($newSrc);
 
-//            {{ $message->embed(public_path('img/logo.jpg')) }}
+//            {{ $message->embed(public_path('imagenes/$imageName')) }}
 
             $image->setAttribute('src', $newSrc);
         }
@@ -99,10 +99,24 @@ class EmailRepository
 
 //        dump($newHtml);
 
+        $resp = [];
+
         $emails = Email::all();
         foreach ($emails as $email) {
-            Mail::to($email->email)->send(new GenerateEmail($subjectContent, $newHtml));
+            if(Mail::to($email->email)->send(new GenerateEmail($subjectContent, $newHtml))){
+                $resp[] = [
+                    'email' => $email->email,
+                    'response' => 'Send',
+                ];
+            }else{
+                $resp[] = [
+                    'email' => $email->email,
+                    'response' => 'Error',
+                ];
+            }
         }
+
+        return $resp;
 
     }
 }

@@ -17,6 +17,6 @@ class SendGenerateEmailService
             'htmlContent' => $param->htmlContent,
         ];
 
-        $this->emailRepository->sendGenerateEmail($data);
+        return $this->emailRepository->sendGenerateEmail($data);
     }
 }

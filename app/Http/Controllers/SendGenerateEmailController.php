@@ -19,7 +19,7 @@ class SendGenerateEmailController extends Controller
             'htmlContent' => 'required',
         ]);
 
-        $this->sendGenerateEmailService->handle(new SendGenerateEmailRequest(
+        return $this->sendGenerateEmailService->handle(new SendGenerateEmailRequest(
             $request->input('subjectContent'),
             $request->input('htmlContent')
         ));
