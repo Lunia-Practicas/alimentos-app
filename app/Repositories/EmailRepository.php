@@ -67,32 +67,6 @@ class EmailRepository
         $subjectContent = $data['subjectContent'];
         $htmlContent = $data['htmlContent'];
 
-//        $dom = new DomDocument();
-//
-//        $dom->loadHTML($htmlContent);
-//
-//        $images = $dom->getElementsByTagName('img');
-//
-//        foreach ($images as $image) {
-//            $src = $image->getAttribute('src');
-//
-//            list($type, $data) = explode(';', $src);
-//            list(, $data)      = explode(',', $data);
-//
-//            // Decodificar los datos en base64
-//            $data = base64_decode($data);
-//
-//            // Generar un nombre de archivo único
-//            $imageName = 'imagen_' . time() . '_' . uniqid() . '.jpg';
-//
-//            Storage::disk('public')->put('imagenes/'.$imageName, $data);
-//
-//            $newSrc = asset(Storage::disk('public')->url('imagenes/'.$imageName));
-//
-//            $image->setAttribute('src', $newSrc);
-//        }
-//        $newHtml = $dom->saveHTML();
-
         $resp = [];
 
         $emails = Email::all();
