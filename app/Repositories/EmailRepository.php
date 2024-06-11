@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Mail\GenerateEmail;
+use App\Models\Audit;
 use App\Models\Email;
 use Carbon\Carbon;
 use DOMDocument;
@@ -71,12 +72,25 @@ class EmailRepository
 
         $emails = Email::all();
         foreach ($emails as $email) {
-            if(Mail::to($email->email)->send(new GenerateEmail($subjectContent, $htmlContent))){
+
+            try {
+                Mail::to($email->email)->send(new GenerateEmail($subjectContent, $htmlContent));
+                Audit::create([
+                    'addressee' => $email->email,
+                    'subject' => $subjectContent,
+                    'body' => $htmlContent,
+                ]);
                 $resp[] = [
                     'email' => $email->email,
                     'response' => 'Send',
                 ];
-            }else{
+            } catch (\Exception $e) {
+                Audit::create([
+                    'addressee' => $email->email,
+                    'subject' => $subjectContent,
+                    'body' => $htmlContent,
+                    'error' => $e->getMessage(),
+                ]);
                 $resp[] = [
                     'email' => $email->email,
                     'response' => 'Error',
