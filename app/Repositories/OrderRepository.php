@@ -170,13 +170,13 @@ class OrderRepository
             Audit::create([
                 'addressee' => $order_pdf['order']->email,
                 'subject' => 'Número pedido: '.$order_pdf['order']->order_num,
-                'body' => $pdf->output(),
+                'body' => "order.pdf",
             ]);
         } catch (\Exception $e) {
             Audit::create([
                 'addressee' => $order_pdf['order']->email,
                 'subject' => 'Número pedido: '.$order_pdf['order']->order_num,
-                'body' => $pdf->output(),
+                'body' => "order.pdf",
                 'error' => $e->getMessage(),
             ]);
         }

@@ -36,7 +36,6 @@ class CreateEmailTemplateTest extends TestCase
             'title' => 'Plantilla 1',
         ]);
 
-        dump($emailTemplate);
     }
 
     #[Test] public function testCanNotCreateEmailTemplateSameTitle()
