@@ -7,6 +7,7 @@ use App\DTO\OrderInformationDTO;
 use App\Events\EmailCreated;
 use App\Events\OrderCreated;
 use App\Exports\OrdersExport;
+use App\Models\Audit;
 use App\Models\Category;
 use App\Models\Email;
 use App\Models\Order;
@@ -160,11 +161,25 @@ class OrderRepository
 
         $pdf = Pdf::loadView('pdf.order', $order_pdf);
 
-         Mail::send('pdf.order-send', $order_pdf, function ($message) use ($order_pdf, $pdf) {
-            $message->to($order_pdf['order']->email, $order_pdf['order']->email)
-                ->subject('Número pedido: '.$order_pdf['order']->order_num)
-                ->attachData($pdf->output(), "order.pdf");
-        });
+        try {
+            Mail::send('pdf.order-send', $order_pdf, function ($message) use ($order_pdf, $pdf) {
+                $message->to($order_pdf['order']->email, $order_pdf['order']->email)
+                    ->subject('Número pedido: '.$order_pdf['order']->order_num)
+                    ->attachData($pdf->output(), "order.pdf");
+            });
+            Audit::create([
+                'addressee' => $order_pdf['order']->email,
+                'subject' => 'Número pedido: '.$order_pdf['order']->order_num,
+                'body' => $pdf->output(),
+            ]);
+        } catch (\Exception $e) {
+            Audit::create([
+                'addressee' => $order_pdf['order']->email,
+                'subject' => 'Número pedido: '.$order_pdf['order']->order_num,
+                'body' => $pdf->output(),
+                'error' => $e->getMessage(),
+            ]);
+        }
 
         return $pdf->download('order.pdf');
     }
