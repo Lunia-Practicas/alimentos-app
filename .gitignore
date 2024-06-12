@@ -8,7 +8,7 @@
 .env
 /config
 /storage/framework
-/bootstrap
+/bootstrap/cache/*.php
 .env.backup
 .env.production
 .phpunit.result.cache
