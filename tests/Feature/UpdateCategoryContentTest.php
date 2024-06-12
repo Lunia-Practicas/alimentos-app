@@ -49,6 +49,8 @@ class UpdateCategoryContentTest extends TestCase
            ))->bind($request);
        });
 
+       sleep(15);
+
        $description = $this->generateCategoryDescriptionController->__invoke($request);
 
        //IMAGE
