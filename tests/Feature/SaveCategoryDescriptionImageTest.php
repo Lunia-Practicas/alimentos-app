@@ -48,6 +48,7 @@ class SaveCategoryDescriptionImageTest extends TestCase
         });
 
         $description = $this->categoryDescriptionController->__invoke($request);
+        sleep(15);
 
         //IMAGE
         $request1 = new Request([],[],[],[],[],[

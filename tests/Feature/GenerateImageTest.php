@@ -39,6 +39,7 @@ class GenerateImageTest extends TestCase
                 []
             ))->bind($request);
         });
+        sleep(15);
 
         $response = $this->controller->__invoke($request);
 
