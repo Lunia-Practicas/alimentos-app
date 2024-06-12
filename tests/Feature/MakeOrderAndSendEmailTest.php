@@ -30,6 +30,7 @@ class MakeOrderAndSendEmailTest extends TestCase
     {
         Mail::fake();
 
+
         $category = Category::factory()->create([
             'name' => 'Fruta'
         ]);
@@ -45,7 +46,10 @@ class MakeOrderAndSendEmailTest extends TestCase
             'id' => $product2->id,
             'quantity' => 1,
             'price' => $product->price,
-            'email' => 'jaimecaballero99@gmail.com'
+            'email' => 'jaimecaballero99@gmail.com',
+            'name_client' => 'Jaime Caballero',
+            'city' => 'Murcia',
+            'address' => 'Calle Falsa 123'
         ]);
 
         $this->makeOrderAndSendEmailController->__invoke($request);

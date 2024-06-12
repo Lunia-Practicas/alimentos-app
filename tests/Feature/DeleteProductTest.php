@@ -34,10 +34,10 @@ class DeleteProductTest extends TestCase
         $product2->refresh();
 
         $request = new Request([],[],[],[],[],[
-            'REQUEST_URI' => 'api/products/' . $category1->id,
+            'REQUEST_URI' => 'api/products/' . $product1->id,
         ]);
 
-        $request->setRouteResolver(function () use ($request, $category1) {
+        $request->setRouteResolver(function () use ($request, $product1) {
             return (new Route(
                 'DELETE',
                 'api/products/{id}',
@@ -65,10 +65,10 @@ class DeleteProductTest extends TestCase
         $product2->refresh();
 
         $request = new Request([],[],[],[],[],[
-            'REQUEST_URI' => 'api/products/' . $category1->id,
+            'REQUEST_URI' => 'api/products/' . $product1->id,
         ]);
 
-        $request->setRouteResolver(function () use ($request, $category1) {
+        $request->setRouteResolver(function () use ($request, $product1) {
             return (new Route(
                 'DELETE',
                 'api/products/{id}',

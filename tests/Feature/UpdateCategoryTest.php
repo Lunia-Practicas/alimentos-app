@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Routing\Route;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
@@ -33,7 +34,21 @@ class UpdateCategoryTest extends TestCase
         $category = Category::factory()->create(['name' => 'test']);
         $category->refresh();
 
-        $response = $this->controller->__invoke($category->id, $this->request);
+        $request = new Request([
+            'name' => 'actualizado'
+        ],[],[],[],[],[
+            'REQUEST_URI' => 'api/categories/' . $category->id,
+        ]);
+
+        $request->setRouteResolver(function () use ($request, $category) {
+            return (new Route(
+                'PATCH',
+                'api/categories/{id}',
+                []
+            ))->bind($request);
+        });
+
+        $response = $this->controller->__invoke($request);
         $responseArray = json_decode($response, true);
         $this->assertEquals('actualizado', $responseArray['name']);
     }
@@ -45,7 +60,21 @@ class UpdateCategoryTest extends TestCase
         $category = Category::factory()->create(['name' => 'test']);
         $category->refresh();
 
-        $this->controller->__invoke($category->id, $this->request);
+        $request = new Request([
+            'name' => 'actualizado'
+        ],[],[],[],[],[
+            'REQUEST_URI' => 'api/categories/' . $category->id,
+        ]);
+
+        $request->setRouteResolver(function () use ($request, $category) {
+            return (new Route(
+                'PATCH',
+                'api/categories/{id}',
+                []
+            ))->bind($request);
+        });
+
+        $this->controller->__invoke($request);
 
         $this->assertDatabaseHas('categories', [
             'name' => 'actualizado'
@@ -63,9 +92,23 @@ class UpdateCategoryTest extends TestCase
         $category = Category::factory()->create(['name' => 'test']);
         $category->refresh();
 
+        $request = new Request([
+            'name' => 'actualizado'
+        ],[],[],[],[],[
+            'REQUEST_URI' => 'api/categories/' . $category->id,
+        ]);
+
+        $request->setRouteResolver(function () use ($request, $category) {
+            return (new Route(
+                'PATCH',
+                'api/categories/{id}',
+                []
+            ))->bind($request);
+        });
+
         $exceptionThrown = false;
         try {
-            $this->controller->__invoke($category->id, $this->request);
+            $this->controller->__invoke($request);
         } catch (\Exception $exception) {
             $exceptionThrown = true;
         }

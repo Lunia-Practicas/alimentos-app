@@ -47,7 +47,6 @@ class GetImagesByProductIdTest extends TestCase
 
         $response = $this->controller->__invoke($request);
 
-        $data = json_decode($response, true);
-        $this->assertCount(2, $data);
+        $this->assertCount(2, $response);
     }
 }

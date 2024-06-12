@@ -47,7 +47,7 @@ class SendOrderPdfEmailTest extends TestCase
         $this->assertDatabaseHas('audits', [
             'addressee' => $email->email,
             'subject' => 'Número pedido: ' . $orderA->order_num,
-            'body' => 'order.pdf'
+            'body' => 'Enlace pdf'
         ]);
 
         $this->assertInstanceOf(Response::class, $response);
@@ -80,7 +80,7 @@ class SendOrderPdfEmailTest extends TestCase
         $this->assertDatabaseHas('audits', [
             'addressee' => $email->email,
             'subject' => 'Número pedido: ' . $orderA->order_num,
-            'body' => 'order.pdf',
+            'body' => 'Enlace pdf',
             'error' => 'Mail sending failed'
         ]);
 

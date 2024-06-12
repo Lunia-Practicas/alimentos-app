@@ -38,20 +38,23 @@ class UpdateImageByIdTest extends TestCase
         ProductContent::factory()->create(['product_id' => $product->id]);
         $image = Image::factory()->create(['product_id' => $product->id]);
 
-        $request = new Request([],[],[],[],[],[
-            'REQUEST_URI' => 'api/products/image/description/' . $image->id,
+        $request = new Request([
+            'image' => 'nueva'
+        ],[],[],[],[],[
+            'REQUEST_URI' => 'api/products/image/' . $image->id,
         ]);
 
         $request->setRouteResolver(function () use ($request, $image) {
             return (new Route(
-                'GET',
-                'api/products/image/description/{id}',
+                'PATCH',
+                'api/products/image/{id}',
                 []
             ))->bind($request);
         });
 
-        $newImageUrl = $this->controllerGenerate->__invoke($request);
+        $response = $this->controllerUpdate->__invoke($request);
 
+        $this->assertInstanceOf(Image::class, $response);
 
     }
 }

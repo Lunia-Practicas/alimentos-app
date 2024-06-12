@@ -3,7 +3,9 @@
 namespace Tests\Feature;
 
 use App\Http\Controllers\GenerateOrderPdfController;
+use App\Models\Email;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -26,8 +28,15 @@ class GenerateOrderPdfTest extends TestCase
 
     #[Test] public function testGenerateOrderPdf()
     {
-        $orderA = Order::factory()->create();
-        Order::factory()->create();
+        $product = Product::factory()->create();
+        $email = Email::factory()->create();
+
+        $orderA = Order::factory()->create([
+            'email' => $email->email,
+            'product_id' => $product->id,
+            'category_id' => $product->category_id,
+            'quantity' => 1
+        ]);
 
         $request = new Request([
             'order_num' => $orderA->order_num,
