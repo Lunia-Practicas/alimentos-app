@@ -7,7 +7,6 @@
 /vendor
 .env
 /config
-/storage/framework
 /bootstrap/cache/*.php
 .env.backup
 .env.production
