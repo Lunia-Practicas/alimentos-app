@@ -13,7 +13,7 @@ class Audit extends Model
 
     use HasFactory, Notifiable;
 
-    protected $fillable = ['addressee', 'subject', 'body', 'error'];
+    protected $fillable = ['addressee', 'subject', 'body', 'error', 'pdf'];
 
     const UPDATED_AT = null;
 }

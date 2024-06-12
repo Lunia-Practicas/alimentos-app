@@ -15,6 +15,7 @@ use App\Models\Product;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class OrderRepository
@@ -161,6 +162,10 @@ class OrderRepository
 
         $pdf = Pdf::loadView('pdf.order', $order_pdf);
 
+        $pdfName = 'order_'.$order->order_num.'_'.time().'.pdf';
+
+        Storage::put('public/pdfs/'.$pdfName,$pdf->output());
+
         try {
             Mail::send('pdf.order-send', $order_pdf, function ($message) use ($order_pdf, $pdf) {
                 $message->to($order_pdf['order']->email, $order_pdf['order']->email)
@@ -170,14 +175,16 @@ class OrderRepository
             Audit::create([
                 'addressee' => $order_pdf['order']->email,
                 'subject' => 'Número pedido: '.$order_pdf['order']->order_num,
-                'body' => "order.pdf",
+                'body' => "Enlace pdf",
+                'pdf' => $pdfName,
             ]);
         } catch (\Exception $e) {
             Audit::create([
                 'addressee' => $order_pdf['order']->email,
                 'subject' => 'Número pedido: '.$order_pdf['order']->order_num,
-                'body' => "order.pdf",
+                'body' => "Enlace pdf",
                 'error' => $e->getMessage(),
+                'pdf' => $pdfName,
             ]);
         }
 
