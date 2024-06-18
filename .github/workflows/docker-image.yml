@@ -18,7 +18,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    # - name: Log in to GitHub Container Registry
+    #   run: echo ${{ secrets.GHCR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      
+    # - name: Set repository name to lowercase
+    #   id: repo-name
+    #   run: echo "repo_name=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
+    # - name: Build the Docker image
+    #   run: docker build . --file Dockerfile --tag ghcr.io/${{ env.repo_name }}/my-image-name:latest
+
+    # - name: Push the Docker image
+    #   run: docker push ghcr.io/${{ env.repo_name }}/my-image-name:latest
+    
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
